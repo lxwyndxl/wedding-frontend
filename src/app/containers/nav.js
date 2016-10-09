@@ -39,9 +39,9 @@ export function HeaderNavAnchor({ text, anchorId, onClick }) {
 
 export function HeaderNavLogo() {
   return (
-    <li className="nav-item">
-      <a href="#">
-        <img src={logo} className="logo" />
+    <li className="nav-item home">
+      <a href="/">
+        <img src={logo} className="logo" alt="logo for bride and groom" />
       </a>
     </li>
   );
