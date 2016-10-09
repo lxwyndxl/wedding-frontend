@@ -7,7 +7,7 @@ import heroDivider from '../../images/hero-divider.png';
 class Hero extends Component {
   render() {
     return (
-      <div className="hero">
+      <section className="hero">
         <div className="max-width">
           <div className="hero-image-container">
             <img src={brideAndGroomImage} className="hero-image" alt="Bride and groom" />
@@ -24,7 +24,7 @@ class Hero extends Component {
             <p className="wedding-date">09.02.17</p>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

@@ -4,6 +4,7 @@ import '../../stylesheets/containers/App.css';
 import HeaderNav from './nav';
 import Hero from '../components/hero';
 import Cta from '../components/cta';
+import About from '../components/about';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <HeaderNav />
         <Hero />
         <Cta />
+        <About />
       </div>
     );
   }
