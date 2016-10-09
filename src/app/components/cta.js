@@ -19,12 +19,12 @@ class CTA extends Component {
 
   render() {
     return (
-      <div className="cta">
+      <section className="cta">
         <RSVPButton
           text="RSVP NOW"
           onClick={this.onRSVP}
         />
-      </div>
+      </section>
     );
   }
 }

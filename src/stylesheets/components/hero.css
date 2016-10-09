@@ -37,6 +37,7 @@
 .jessica-plus-anh {
   font-weight: 100;
   font-size: 60px;
+  text-shadow: 0px 1px 1px #fff;
 }
 
 .hero-divider {
@@ -48,26 +49,31 @@
   width: 410px;
   color: #fff;
   text-shadow: 0px 1px 1px #999;
-  text-align: justify;
+  text-align: center;
+  font-weight: 900;
 }
 
 .welcome-text-1 {
-  font-size: 78px;
+  font-size: 75px;
 }
 
-.welcome-text-2,
+.welcome-text-2 {
+  font-size: 60px;
+}
+
 .welcome-text-3 {
-  font-size: 62px;
+  font-size: 61px;
 }
 
 .welcome-text-4 {
-  font-size: 103px;
+  font-size: 101px;
 }
 
 .wedding-date {
   width: 400px;
   color: #333;
-  text-align: justify;
+  text-shadow: 0px 1px 1px #fff;
+  text-align: center;
   font-weight: 900;
   font-size: 99px;
 }
