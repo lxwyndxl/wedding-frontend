@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+import '../../stylesheets/components/cta.css';
+
+export function RSVPButton({ text, onClick }) {
+  return (
+    <button
+      className="rsvp-button"
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  );
+}
+
+class CTA extends Component {
+  onRSVP() {
+    // Show dialog
+  }
+
+  render() {
+    return (
+      <div className="cta">
+        <RSVPButton
+          text="RSVP NOW"
+          onClick={this.onRSVP}
+        />
+      </div>
+    );
+  }
+}
+
+export default CTA;

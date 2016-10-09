@@ -3,6 +3,7 @@ import '../../stylesheets/containers/App.css';
 
 import HeaderNav from './nav';
 import Hero from '../components/hero';
+import Cta from '../components/cta';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="App">
         <HeaderNav />
         <Hero />
+        <Cta />
       </div>
     );
   }
