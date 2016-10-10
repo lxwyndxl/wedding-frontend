@@ -1,0 +1,57 @@
+.day-of {
+  background: #333;
+  min-height: 650px;
+}
+
+.day-of header {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 100;
+  padding: 50px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-of-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 10%;
+}
+
+.day-of-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.day-of-map {
+  width: 60%;
+  height: 60%;
+}
+
+.day-of-cal {
+  width: 58%;
+  height: 58%;
+}
+
+.day-of-title {
+  color: #fff;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.day-of-desc {
+  color: #fff;
+  text-align: center;
+}
+
+.day-of-note {
+  margin-top: 80px;
+  color: #aaa;
+  text-align: center;
+}
