@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import Reducers from './app/reducers';
 import App from './app/containers/App';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -8,13 +11,17 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const WeddingApp = () => (
+let store = createStore(Reducers)
+
+const Application = () => (
   <MuiThemeProvider>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </MuiThemeProvider>
 );
 
 ReactDOM.render(
-  <WeddingApp />,
+  <Application />,
   document.getElementById('root')
 );
