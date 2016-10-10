@@ -10,52 +10,52 @@ import rocket from '../../images/rocket.png';
 const TIMELINE_EVENTS = [
   {
     event: 'meet',
-    text: 'Meet for the very first time'
+    text: 'Meet for the very first time',
   },
   {
     event: 'court',
-    text: 'Lots of courting'
+    text: 'Lots of courting',
   },
   {
     event: 'date',
-    text: 'Start dating'
+    text: 'Start dating',
   },
   {
     event: 'study',
-    text: 'Study in Hong Kong'
+    text: 'Study in Hong Kong',
   },
   {
     event: 'move',
-    text: 'Move to Bay Area'
+    text: 'Move to Bay Area',
   },
   {
     event: 'adopt',
-    text: 'Adopt baoBao'
+    text: 'Adopt baoBao',
   },
   {
     event: 'move-in',
-    text: 'Move in together'
+    text: 'Move in together',
   },
   {
     event: 'propose',
-    text: 'Anh proposes'
+    text: 'Anh proposes',
   },
   {
     event: 'marry',
-    image: marriage
+    image: marriage,
   },
   {
     event: 'buy',
-    image: house
+    image: house,
   },
   {
     event: 'have',
-    image: stroller
+    image: stroller,
   },
   {
     event: 'launch',
-    image: rocket
-  },
+    image: rocket,
+  }
 ];
 
 export function TimelineEvent({ event, text, image }) {
