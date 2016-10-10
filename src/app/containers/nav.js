@@ -6,24 +6,24 @@ import logo from '../../images/logo.png';
 const HEADER_NAV_ANCHORS = [
   {
     text: 'BRIDE & GROOM',
-    anchorId: 'bride-and-groom'
+    anchorId: 'bride-and-groom',
   },
   {
     text: 'WEDDING PARTY',
-    anchorId: 'wedding-party'
+    anchorId: 'wedding-party',
   },
   {
     text: 'THE DAY OF',
-    anchorId: 'the-day-of'
+    anchorId: 'the-day-of',
   },
   {
     text: 'PHOTOS',
-    anchorId: 'photos'
+    anchorId: 'photos',
   },
   {
     text: 'RSVP',
-    anchorId: 'rsvp'
-  },
+    anchorId: 'rsvp',
+  }
 ];
 
 export function HeaderNavAnchor({ text, anchorId, onClick }) {

@@ -10,6 +10,6 @@ p, span, a {
 }
 
 .max-width {
-  width: 1166px;
+  max-width: 90%;
   margin: 0 auto;
 }
