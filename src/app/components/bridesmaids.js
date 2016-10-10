@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../../stylesheets/components/bridesmaids.css';
 
+import Showcase from './showcase';
+
 import bridesmaids from '../../images/bridesmaids.png';
 import vanessa from '../../images/bridesmaids/vanessa.png';
 import angie from '../../images/bridesmaids/angie.png';
@@ -14,7 +16,8 @@ const BRIDESMAIDS = [
   {
     fullName: 'Vanessa Wong',
     image: vanessa,
-    isMaidOfHonor: true,
+    isSpecial: true,
+    specialTitle: 'Maid of Honor',
   },
   {
     fullName: 'Angie Huang',
@@ -42,41 +45,16 @@ const BRIDESMAIDS = [
   }
 ];
 
-export function Headshot({ fullName, image, isMaidOfHonor }) {
-  const bridesmaidClass = isMaidOfHonor ? 'bridesmaid mod' : 'bridesmaid';
-
-  return (
-    <li className={bridesmaidClass}>
-      <img src={image} className="bridesmaid-headshot" alt={fullName} />
-      <p classNames="bridesmaid-name">{fullName}</p>
-      {isMaidOfHonor && <p className="maid-of-honor">Maid of Honor</p>}
-    </li>
-  );
-};
-
 class Bridesmaids extends Component {
   render() {
     return (
-      <section className="bridesmaids">
-        <header>
-          <h1 className="bridesmaids-welcome">Meet the bridesmaids</h1>
-          <img src={bridesmaids} className="bridesmaids-image" alt="bridesmaids group"/>
-        </header>
-        <ul className="bridesmaids-headshots">
-          {
-            BRIDESMAIDS.map((bridesmaid, index) => {
-              return (
-                <Headshot
-                  fullName={bridesmaid.fullName}
-                  image={bridesmaid.image}
-                  isMaidOfHonor={bridesmaid.isMaidOfHonor}
-                  key={index}
-                />
-              );
-            })
-          }
-        </ul>
-      </section>
+      <Showcase
+        welcomeMessage='Meet the bridesmaids'
+        welcomeImage={bridesmaids}
+        welcomeColor='red'
+        membersList={BRIDESMAIDS}
+        welcomeImageLeft={false}
+      />
     );
   }
 }
