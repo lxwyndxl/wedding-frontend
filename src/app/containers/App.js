@@ -8,6 +8,7 @@ import About from '../components/about';
 import Timeline from '../components/timeline';
 import Bridesmaids from '../components/bridesmaids';
 import Groomsmen from '../components/groomsmen';
+import OtherParty from '../components/other-party';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
         <Timeline />
         <Bridesmaids />
         <Groomsmen />
+        <OtherParty />
       </div>
     );
   }
