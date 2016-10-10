@@ -5,6 +5,7 @@ import HeaderNav from './nav';
 import Hero from '../components/hero';
 import Cta from '../components/cta';
 import About from '../components/about';
+import Timeline from '../components/timeline';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Hero />
         <Cta />
         <About />
+        <Timeline />
       </div>
     );
   }

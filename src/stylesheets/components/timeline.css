@@ -1,0 +1,114 @@
+.timeline {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.timeline-event {
+  position: absolute;
+  width: 6%;
+}
+
+.image-event {
+  position: absolute;
+  width: auto;
+}
+
+.event-text {
+  color: #aaa;
+  font-size: 10px;
+}
+
+.event-image {
+  width: 55%;
+}
+
+.timeline-event.meet {
+  left: 10%;
+  top: 14%;
+}
+
+.timeline-event.court {
+  left: 14%;
+  top: 79%;
+}
+
+.timeline-event.date {
+  left: 19%;
+  top: 14%;
+}
+
+.timeline-event.study {
+  left: 29%;
+  top: 79%;
+}
+
+.timeline-event.move {
+  left: 35%;
+  top: 14%;
+}
+
+.timeline-event.adopt {
+  left: 40%;
+  top: 79%;
+}
+
+.timeline-event.move-in {
+  left: 44%;
+  top: 14%;
+}
+
+.timeline-event.propose {
+  left: 55%;
+  top: 79%;
+}
+
+.timeline-event.marry {
+  left: 67%;
+  top: 10%;
+}
+
+.timeline-event.buy {
+  left: 71%;
+  top: 80%;
+}
+
+.timeline-event.have {
+  left: 78%;
+  top: 10%;
+}
+
+.timeline-event.launch {
+  left: 86%;
+  top: 80%;
+}
+
+.year {
+  position: absolute;
+  top: 57%;
+}
+
+.y2008 {
+  left: 8.25%;
+}
+
+.y2010 {
+  left: 21.25%;
+}
+
+.y2012 {
+  left: 34.25%;
+}
+
+.y2014 {
+  left: 47.1%;
+}
+
+.y2016 {
+  left: 60%;
+}
+
+.y2099 {
+  left: 89%;
+}

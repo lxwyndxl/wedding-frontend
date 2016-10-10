@@ -20,10 +20,10 @@
 }
 
 .nav-item {
-  margin: 0 30px;
   border-bottom: 0px solid transparent;
   transition: 0.1s;
   cursor: pointer;
+  margin: 0 15px;
 }
 
 .nav-item:hover {
@@ -35,5 +35,5 @@
 }
 
 .logo {
-  width: 60%;
+  width: 40px;
 }

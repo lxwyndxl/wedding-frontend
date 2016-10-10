@@ -1,6 +1,6 @@
 .hero {
   background: linear-gradient(#d7d7d7, #eee, #d7d7d7);
-  height: 600px;
+  min-height: 600px;
   margin-top: 100px;
   padding: 20px 0;
 }
@@ -9,6 +9,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .hero-image-container {
@@ -19,14 +20,12 @@
 }
 
 .hero-image {
-  width: 400px;
-  height: 600px;
+  height: 100%;
 }
 
 .hero-welcome-container {
-  width: 566px;
-  height: 600px;
-  padding-left: 100px;
+  height: 100%;
+  padding-left: 5%;
   float: left;
   display: flex;
   flex-direction: column;
@@ -57,12 +56,9 @@
   font-size: 75px;
 }
 
-.welcome-text-2 {
-  font-size: 60px;
-}
-
+.welcome-text-2,
 .welcome-text-3 {
-  font-size: 61px;
+  font-size: 60px;
 }
 
 .welcome-text-4 {
