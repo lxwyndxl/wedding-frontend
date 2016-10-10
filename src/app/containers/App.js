@@ -7,6 +7,7 @@ import Cta from '../components/cta';
 import About from '../components/about';
 import Timeline from '../components/timeline';
 import Bridesmaids from '../components/bridesmaids';
+import Groomsmen from '../components/groomsmen';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         <About />
         <Timeline />
         <Bridesmaids />
+        <Groomsmen />
       </div>
     );
   }

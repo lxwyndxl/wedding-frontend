@@ -1,0 +1,59 @@
+.members {
+  min-height: 800px;
+}
+
+.members header {
+  background: #eee;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.members-welcome {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  width: 50%;
+  font-weight: 100;
+  float: left;
+}
+
+.welcome-image {
+  width: 50%;
+  height: 50%;
+  float: left;
+}
+
+.members-headshots {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px 10% 0;
+}
+
+.member {
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  margin: 0 25px 25px;
+}
+
+.member.special {
+  background: #eee;
+}
+
+.member-headshot {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.special {
+  color: #999;
+  margin-top: 5px;
+}
