@@ -1,0 +1,59 @@
+.bridesmaids {
+  min-height: 800px;
+}
+
+.bridesmaids header {
+  background: #f57670;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bridesmaids-welcome {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  width: 50%;
+  float: left;
+  font-weight: 100;
+}
+
+.bridesmaids-image {
+  width: 50%;
+  height: 50%;
+  float: right;
+}
+
+.bridesmaids-headshots {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px 10% 0;
+}
+
+.bridesmaid {
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  margin: 0 25px 25px;
+}
+
+.bridesmaid.mod {
+  background: #eee;
+}
+
+.bridesmaid-headshot {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.maid-of-honor {
+  color: #999;
+  margin-top: 5px;
+}

@@ -6,6 +6,7 @@ import Hero from '../components/hero';
 import Cta from '../components/cta';
 import About from '../components/about';
 import Timeline from '../components/timeline';
+import Bridesmaids from '../components/bridesmaids';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Cta />
         <About />
         <Timeline />
+        <Bridesmaids />
       </div>
     );
   }
