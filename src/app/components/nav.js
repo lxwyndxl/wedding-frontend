@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../stylesheets/containers/nav.css';
+import '../../stylesheets/components/nav.css';
 
 import logo from '../../images/logo.png';
 
