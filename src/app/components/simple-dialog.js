@@ -27,7 +27,7 @@ class SimpleDialog extends Component {
 
     return (
       <Dialog
-        title="RSVP"
+        title="RSVP Now"
         actions={actions}
         modal={false}
         open={this.props.isOpen}

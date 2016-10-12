@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../stylesheets/components/cta.css';
 
-class RsvpButton extends Component {
+class Cta extends Component {
 
   render() {
     return (
@@ -17,4 +17,4 @@ class RsvpButton extends Component {
   }
 }
 
-export default RsvpButton;
+export default Cta;
