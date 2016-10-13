@@ -7,7 +7,7 @@ export function Headshot({ fullName, image, isSpecial, specialTitle }) {
   return (
     <li className={memberClass}>
       <img src={image} className="member-headshot" alt={fullName} />
-      <p classNames="member-name">{fullName}</p>
+      <p className="member-name">{fullName}</p>
       {isSpecial && <p className="special">{specialTitle}</p>}
     </li>
   );

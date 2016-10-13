@@ -1,32 +1,20 @@
 import React, { Component } from 'react';
 import '../../stylesheets/components/cta.css';
 
-export function RSVPButton({ text, onClick }) {
-  return (
-    <button
-      className="rsvp-button"
-      onClick={onClick}
-    >
-      {text}
-    </button>
-  );
-}
-
-class CTA extends Component {
-  onRSVP() {
-    // Show dialog
-  }
+class Cta extends Component {
 
   render() {
     return (
       <section className="cta">
-        <RSVPButton
-          text="RSVP NOW"
-          onClick={this.onRSVP}
-        />
+        <button
+          className="rsvp-button"
+          onClick={this.props.onRsvpClick}
+        >
+          RSVP NOW
+        </button>
       </section>
     );
   }
 }
 
-export default CTA;
+export default Cta;
