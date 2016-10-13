@@ -4,8 +4,15 @@ import { hideModal } from '../actions/hide-modal';
 import SimpleDialog from '../components/simple-dialog';
 
 const mapStateToProps = (state) => {
+  const {
+    modalType,
+    modalProps,
+  } = state.modal;
+
   return {
-    isOpen: state.modal.modalType != null,
+    isOpen: modalType != null,
+    title: modalProps.title,
+    content: modalProps.content,
   };
 };
 

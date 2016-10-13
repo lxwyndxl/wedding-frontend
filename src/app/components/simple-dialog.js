@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -11,32 +11,53 @@ import FlatButton from 'material-ui/FlatButton';
 class SimpleDialog extends Component {
 
   render() {
+    const {
+      cancelText,
+      onDialogClose,
+      submitText,
+      title,
+      isOpen,
+      content,
+    } = this.props;
+
     const actions = [
       <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={this.props.onDialogClose}
+        label={cancelText}
+        primary={false}
+        onTouchTap={onDialogClose}
       />,
       <FlatButton
-        label="Submit"
+        label={submitText}
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.props.onDialogClose}
+        onTouchTap={onDialogClose}
       />,
     ];
 
     return (
       <Dialog
-        title="RSVP Now"
+        title={title}
         actions={actions}
         modal={false}
-        open={this.props.isOpen}
-        onRequestClose={this.props.onDialogClose}
+        open={isOpen}
+        onRequestClose={onDialogClose}
       >
-        TODO
+        {content}
       </Dialog>
     );
   }
 }
+
+SimpleDialog.propTypes = {
+  onDialogClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+};
+
+SimpleDialog.defaultProps = {
+  submitText: 'Submit',
+  cancelText: 'Cancel',
+  title: '',
+  content: <div />,
+};
 
 export default SimpleDialog;

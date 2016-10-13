@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { showModal } from '../actions/show-modal';
 import Cta from '../components/cta';
@@ -11,7 +12,10 @@ const mapDispatchToProps = (dispatch) => {
     onRsvpClick: () => {
       dispatch(showModal({
         modalType: 'rsvp',
-        modalProps: {},
+        modalProps: {
+          title: 'RSVP Now',
+          content: <div class="hello">Hewo</div>,
+        },
       }));
     },
   };
