@@ -13,3 +13,11 @@ p, span, a {
   max-width: 90%;
   margin: 0 auto;
 }
+
+.scrolled-to {
+  margin-top: -100px;
+}
+
+.scroll-wrapper {
+  padding-top: 100px;
+}

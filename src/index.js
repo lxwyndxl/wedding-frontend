@@ -11,7 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-let store = createStore(Reducers)
+let store = createStore(Reducers);
 
 const Application = () => (
   <MuiThemeProvider>

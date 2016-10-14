@@ -20,13 +20,24 @@
 }
 
 .nav-item {
+  padding: 5px 15px;
+}
+
+.nav-item-anchor {
   border-bottom: 0px solid transparent;
   transition: 0.1s;
   cursor: pointer;
-  margin: 0 15px;
 }
 
 .nav-item:hover {
+  background: #eee;
+}
+
+.nav-item.home:hover {
+  background: none;
+}
+
+.nav-item .active {
   border-bottom: 3px solid #f57670;
 }
 
