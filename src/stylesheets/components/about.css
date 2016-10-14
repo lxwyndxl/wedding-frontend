@@ -4,9 +4,8 @@
 
 .about-container {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
-  padding-top: 75px;
+  justify-content: center;
 }
 
 .rings-and-heart {
@@ -19,6 +18,7 @@
 
 .passage {
   width: 583px;
+  margin-top: 75px;
 }
 
 .person {

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Scroll from 'react-scroll';
 import '../../stylesheets/components/nav.css';
 
 import logo from '../../images/logo.png';
+
+const Link = Scroll.Link;
 
 const HEADER_NAV_ANCHORS = [
   {
@@ -32,8 +35,19 @@ export function HeaderNavAnchor({ text, anchorId, onClick }) {
       className="nav-item"
       onClick={onClick}
     >
-      <a href="#">{text}</a>
+      <Link
+        activeClass="active"
+        className="nav-item-anchor"
+        to={anchorId}
+        spy={true}
+        smooth={true}
+        duration={500}
+        isDynamic={true}
+      >
+        {text}
+      </Link>
     </li>
+
   );
 }
 
