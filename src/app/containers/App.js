@@ -22,21 +22,21 @@ class App extends Component {
         <HeaderNav />
         <Hero />
         <CtaSection />
-        <section className="bride-and-groom scrolled-to">
-          <Element name="bride-and-groom" className="scroll-wrapper">
+        <section className="bride-and-groom scrollable">
+          <Element name="bride-and-groom" className="scroll-to-wrapper">
             <About />
             <Timeline />
           </Element>
         </section>
-        <section className="wedding-party scrolled-to">
-          <Element name="wedding-party" className="scroll-wrapper">
+        <section className="wedding-party scrollable">
+          <Element name="wedding-party" className="scroll-to-wrapper">
             <Bridesmaids />
             <Groomsmen />
             <OtherParty />
           </Element>
         </section>
-        <section className="the-day-of scrolled-to">
-          <Element name="the-day-of" className="scroll-wrapper">
+        <section className="the-day-of scrollable">
+          <Element name="the-day-of" className="scroll-to-wrapper">
             <DayOf />
           </Element>
         </section>

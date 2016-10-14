@@ -14,10 +14,10 @@ p, span, a {
   margin: 0 auto;
 }
 
-.scrolled-to {
+.scrollable {
   margin-top: -100px;
 }
 
-.scroll-wrapper {
+.scroll-to-wrapper {
   padding-top: 100px;
 }
