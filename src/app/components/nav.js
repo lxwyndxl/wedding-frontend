@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { showRsvpModal } from '../actions/show-rsvp-modal';
 import Scroll from 'react-scroll';
 import '../../stylesheets/components/nav.css';
 
@@ -6,7 +8,7 @@ import logo from '../../images/logo.png';
 
 const Link = Scroll.Link;
 
-const HEADER_NAV_ANCHORS = [
+const SCROLLABLE_HEADER_NAV_ANCHORS = [
   {
     text: 'BRIDE & GROOM',
     anchorId: 'bride-and-groom',
@@ -22,18 +24,13 @@ const HEADER_NAV_ANCHORS = [
   {
     text: 'PHOTOS',
     anchorId: 'photos',
-  },
-  {
-    text: 'RSVP',
-    anchorId: 'rsvp',
   }
 ];
 
-export function HeaderNavAnchor({ text, anchorId, onClick }) {
+export function HeaderNavScrollableAnchor({ text, anchorId }) {
   return (
     <li
       className="nav-item"
-      onClick={onClick}
     >
       <Link
         activeClass="active"
@@ -51,44 +48,48 @@ export function HeaderNavAnchor({ text, anchorId, onClick }) {
   );
 }
 
-export function HeaderNavLogo() {
-  return (
-    <li className="nav-item home">
-      <a href="/">
-        <img src={logo} className="logo" alt="logo for bride and groom" />
-      </a>
-    </li>
-  );
-}
-
 class Nav extends Component {
-  onHeaderAnchorClick() {
-    // Scroll
+
+  onRsvpClick() {
+    this.props.dispatch(showRsvpModal());
   }
 
   render() {
     return (
       <nav className="nav">
         <ul className="nav-item-container max-width">
-          <HeaderNavLogo />
+          <li className="nav-item home">
+            <a href="/">
+              <img src={logo} className="logo" alt="logo for bride and groom" />
+            </a>
+          </li>
+
           {
-            HEADER_NAV_ANCHORS.map((anchor, index) => {
+            SCROLLABLE_HEADER_NAV_ANCHORS.map((anchor, index) => {
               return (
-                <HeaderNavAnchor
+                <HeaderNavScrollableAnchor
                   text={anchor.text}
                   anchorId={anchor.anchorId}
-                  onClick={this.onHeaderAnchorClick}
                   key={index}
                 />
               );
             })
           }
+
+          <li
+            className="nav-item"
+            onClick={this.onRsvpClick.bind(this)}
+          >
+            <a href="#">
+              RSVP
+            </a>
+          </li>
         </ul>
       </nav>
     );
   }
 }
 
-
+Nav = connect()(Nav);
 
 export default Nav;
