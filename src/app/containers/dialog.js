@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { hideModal } from '../actions/hide-modal';
 
-import SimpleDialog from '../components/simple-dialog';
+import SimpleDialog from '../components/common/simple-dialog';
 
 const mapStateToProps = (state) => {
   const {
