@@ -50,7 +50,8 @@ export function HeaderNavScrollableAnchor({ text, anchorId }) {
 
 class Nav extends Component {
 
-  onRsvpClick() {
+  onRsvpClick(evt) {
+    evt.preventDefault();
     this.props.dispatch(showRsvpModal());
   }
 

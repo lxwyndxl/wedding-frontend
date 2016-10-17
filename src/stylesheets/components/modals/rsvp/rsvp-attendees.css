@@ -1,0 +1,93 @@
+.rsvp-attendees {
+  width: 70%;
+  padding: 20px;
+}
+
+.rsvp-attendees-prompt {
+  margin-bottom: 15px;
+}
+
+.rsvp-attendee-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.rsvp-attendee {
+  width: 40%;
+  height: 70px;
+  padding-left: 70px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+  position: relative;
+}
+
+.rsvp-attendee.attending {
+  background: #4caf50;
+}
+
+.rsvp-attendee.attending .edit-email {
+  color: #eee;
+}
+
+.attendee-avatar {
+  position: absolute;
+  z-index: 1;
+  margin-left: -60px;
+}
+
+.attendee-avatar-bg {
+  position: absolute;
+  z-index: 0;
+  margin-left: -62px;
+}
+
+.attendee-data {
+  width: 85%;
+}
+
+.attendee-name {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.attendee-email {
+  font-size: 13px;
+}
+
+.edit-email {
+  margin-left: 15px;
+  color: #2d8cc2;
+}
+
+.attendee-going {
+  width: 24px;
+  overflow: hidden;
+}
+
+.group-address {
+  display: flex;
+  align-items: baseline;
+  margin-top: 10px;
+}
+
+.address-title {
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.address {
+  font-size: 13px;
+}
+
+.address.edit {
+  margin-left: 20px;
+}
+
+.edit-address {
+  color: #2d8cc2;
+}
