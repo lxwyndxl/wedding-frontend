@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import '../../stylesheets/components/about.css';
 
 import ringsAndHeart from '../../images/rings-and-heart.png';
@@ -8,7 +9,7 @@ export function Passage({ person, firstName, lastName, text }) {
   const roleText = isGroom ? 'THE GROOM' : 'THE BRIDE';
 
   return (
-    <div className={isGroom ? 'groom passage' : 'bride passage'}>
+    <div className={cx('passage', {'groom': isGroom, 'bride': !isGroom})}>
       <h2 className="person">
         {roleText}
       </h2>

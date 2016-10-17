@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import '../../stylesheets/components/timeline.css';
 
 import timeline from '../../images/timeline.png';
@@ -59,11 +60,8 @@ const TIMELINE_EVENTS = [
 ];
 
 export function TimelineEvent({ event, text, image }) {
-  const timelineClass = event +
-    (image ? ' image-event timeline-event' : ' timeline-event');
-
   return (
-    <div className={timelineClass}>
+    <div className={cx(event, 'timeline-event', {'image-event': !!image})}>
       {text && <p className="event-text">{text}</p>}
       {image && <img className="event-image" src={image} alt="timeline event" />}
     </div>

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -19,6 +20,15 @@ class SimpleDialog extends Component {
       isOpen,
       content,
     } = this.props;
+
+    const customContentStyle = {
+      width: '80%',
+      maxWidth: 'none',
+    };
+
+    const customBodyStyle = {
+      padding: 0,
+    };
 
     const actions = [
       <FlatButton
@@ -41,14 +51,20 @@ class SimpleDialog extends Component {
         modal={false}
         open={isOpen}
         onRequestClose={onDialogClose}
-      >
-        {content}
-      </Dialog>
+        autoScrollBodyContent={true}
+        children={content}
+        contentStyle={customContentStyle}
+        bodyStyle={customBodyStyle}
+      />
     );
   }
 }
 
 SimpleDialog.propTypes = {
+  submitText: PropTypes.string,
+  cancelText: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.node,
   onDialogClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
 };
@@ -57,7 +73,7 @@ SimpleDialog.defaultProps = {
   submitText: 'Submit',
   cancelText: 'Cancel',
   title: '',
-  content: <div />,
+  content: <div/>,
 };
 
 export default SimpleDialog;

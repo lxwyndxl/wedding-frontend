@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import '../../stylesheets/components/showcase.css';
 
 export function Headshot({ fullName, image, isSpecial, specialTitle }) {
-  const memberClass = isSpecial ? 'member special' : 'member';
-
   return (
-    <li className={memberClass}>
+    <li className={cx('member', {'special': isSpecial})}>
       <img src={image} className="member-headshot" alt={fullName} />
       <p className="member-name">{fullName}</p>
       {isSpecial && <p className="special">{specialTitle}</p>}
