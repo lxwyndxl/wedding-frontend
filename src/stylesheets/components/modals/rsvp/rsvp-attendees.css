@@ -16,7 +16,7 @@
 }
 
 .rsvp-attendee {
-  width: 40%;
+  width: 38%;
   height: 70px;
   padding-left: 70px;
   border: 1px solid #ddd;
@@ -60,8 +60,12 @@
 }
 
 .edit-email {
-  margin-left: 15px;
   color: #2d8cc2;
+}
+
+.email.edit {
+  font-size: 13px;
+  margin-top: 5px;
 }
 
 .attendee-going {
