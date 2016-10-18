@@ -54,8 +54,8 @@ export function Attendee({ name, email, isAttending, onCheck }) {
 
       <div className="attendee-data">
         <p className="attendee-name">{name}</p>
-        <p className="attendee-email">
-          {email}
+        <p className="attendee-email">{email}</p>
+        <p className="email edit">
           <a href="#" className="edit-email">
             edit
           </a>

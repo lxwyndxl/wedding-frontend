@@ -2,3 +2,59 @@
   width: 30%;
   background: #efefef;
 }
+
+.rsvp-details h2 {
+  padding: 18px 20px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 700;
+}
+
+.details-prompt {
+  font-size: 13px;
+}
+
+.meal-preferences {
+  padding: 0 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.overnight-preferences,
+.extra-preferences {
+  padding: 20px 20px 0 20px;
+}
+
+.overnight-preferences-checkboxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.attendee-going {
+  width: 24px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.rsvp-day-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rsvp-day-section.checked .rsvp-day-image-wrapper {
+  justify-content: flex-end;
+}
+
+.rsvp-day-image-wrapper {
+  width: 66px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rsvp-day {
+  height: 66px;
+}
