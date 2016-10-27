@@ -4,7 +4,7 @@ import '../../stylesheets/components/App.css';
 
 import HeaderNav from '../components/nav';
 import Hero from '../components/hero';
-import CtaSection from './cta-section';
+import Cta from '../components/cta';
 import About from '../components/about';
 import Timeline from '../components/timeline';
 import Bridesmaids from '../components/bridesmaids';
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <HeaderNav />
         <Hero />
-        <CtaSection />
+        <Cta />
         <section className="bride-and-groom scrollable">
           <Element name="bride-and-groom" className="scroll-to-wrapper">
             <About />
