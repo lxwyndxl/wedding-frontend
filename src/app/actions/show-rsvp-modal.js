@@ -1,15 +1,15 @@
 import React from 'react';
 import { showModal } from '../actions/show-modal';
-import Rsvp from '../components/modals/rsvp/rsvp';
+import RsvpPasscode from '../containers/modals/rsvp-passcode';
 
-const modalProps = {
+const passcodeModalProps = {
   modalType: 'rsvp',
   modalProps: {
     title: 'RSVP Now',
-    content: <Rsvp/>,
+    content: <RsvpPasscode />,
   },
 };
 
-export const showRsvpModal = () => {
-  return showModal(modalProps);
+export const showRsvpPasscodeModal = () => {
+  return showModal(passcodeModalProps);
 };

@@ -21,3 +21,9 @@ p, span, a {
 .scroll-to-wrapper {
   padding-top: 100px;
 }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

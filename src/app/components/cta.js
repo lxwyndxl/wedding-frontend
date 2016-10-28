@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showRsvpModal } from '../actions/show-rsvp-modal';
+import { showRsvpPasscodeModal } from '../actions/show-rsvp-modal';
 import '../../stylesheets/components/cta.css';
 
 class Cta extends Component {
@@ -12,7 +12,7 @@ class Cta extends Component {
   }
 
   onRsvpClick() {
-    this.dispatch(showRsvpModal());
+    this.dispatch(showRsvpPasscodeModal());
   }
 
   render() {
