@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import Reducers from './app/reducers';
+import configureStore from './app/containers/configure-store';
 import App from './app/containers/App';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,7 +11,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-let store = createStore(Reducers);
+const store = configureStore();
 
 const muiTheme = getMuiTheme({
   checkbox: {

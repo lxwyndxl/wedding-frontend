@@ -1,28 +1,19 @@
 .rsvp-modal {
   width: 100.04%;
+  min-height: 300px;
 }
 
-.rsvp-modal header {
-  background: linear-gradient(to right, #44a5c9, #44b8c9);
-  height: 100px;
-  width: 100%;
-  font-size: 35px;
-  font-weight: 700;
-  color: #fff;
+.rsvp-prompt {
+  margin: 50px 0 75px;
+  text-align: center;
+}
+
+.passcodes {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.header-image {
-  position: absolute;
-  margin-left: -40%;
-  width: 9%;
-}
-
-.rsvp-body {
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-end;
-  height: 100%;
+.passcode-field {
+  margin: 0 15px;
 }
