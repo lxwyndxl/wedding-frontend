@@ -33,7 +33,6 @@ export const fetchRsvpGroup = (code) => {
 
   return dispatch => {
     dispatch(requestRsvpGroup());
-
-    return setTimeout(fetchData.bind(this, dispatch), 2000);
+    return setTimeout(fetchData.bind(this, dispatch), 1000);
   };
 }

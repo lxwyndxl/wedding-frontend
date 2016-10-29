@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-passcode.css';
+import { PASSCODE_LENGTH } from '../../../constants/configs';
 
 import TextField from 'material-ui/TextField';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -38,6 +39,17 @@ class RsvpPasscode extends Component {
     this.onPasscodeEnter = this.onPasscodeEnter.bind(this);
   }
 
+  componentWillMount() {
+    const {
+      shouldRenderRsvpGroup,
+      loadRsvpContentModal,
+    } = this.props;
+
+    if (shouldRenderRsvpGroup) {
+      loadRsvpContentModal();
+    }
+  }
+
   onPasscodeEnter(evt) {
     let inputs = ReactDOM.findDOMNode(this.refs.passcodeFields).children;
     let code = '';
@@ -45,7 +57,7 @@ class RsvpPasscode extends Component {
     inputs = Array.prototype.slice.call(inputs);
     inputs.forEach(input => code += input.firstChild.value);
 
-    if (code.length === 5) {
+    if (code.length === PASSCODE_LENGTH) {
       this.props.onPasscodeReady(code);
 
     } else if (evt.keyCode !== 8) {
@@ -60,24 +72,42 @@ class RsvpPasscode extends Component {
   }
 
   render() {
+    const {
+      error,
+      isFetching,
+    } = this.props;
+
+    const passcodeArray = new Array(PASSCODE_LENGTH);
+    for (let i = 0; i < passcodeArray.length; i++) {
+      passcodeArray[i] = i+1;
+    }
+
     return (
       <aside className="rsvp-modal">
-        <p className="rsvp-prompt">Please enter your group's pin.</p>
-        <div className="passcodes" ref="passcodeFields">
-          {
-            [1,2,3,4,5].map((count, index) => {
-              return (
-                <PasscodeField
-                  count={count}
-                  onPasscodeEnter={this.onPasscodeEnter}
-                  isDisabled={this.props.isFetching}
-                  key={index}
-                />
-              );
-            })
-          }
+        <div className="rsvp-passcode">
+          <div className="rsvp-prompt">
+            <p>Please enter your group's rsvp code.</p>
+            {
+              error &&
+              <p className="error">Incorrect code, please try again.</p>
+            }
+          </div>
+          <div className="passcodes" ref="passcodeFields">
+            {
+              passcodeArray.map((count, index) => {
+                return (
+                  <PasscodeField
+                    count={count}
+                    onPasscodeEnter={this.onPasscodeEnter}
+                    isDisabled={isFetching}
+                    key={index}
+                  />
+                );
+              })
+            }
+          </div>
+          {isFetching && <CircularProgress />}
         </div>
-        {this.props.isFetching && <CircularProgress />}
       </aside>
     );
   }
@@ -88,6 +118,7 @@ RsvpPasscode.propTypes = {
   userGroup: PropTypes.object,
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
+  shouldRenderRsvpGroup: PropTypes.bool,
 };
 
 export default RsvpPasscode;

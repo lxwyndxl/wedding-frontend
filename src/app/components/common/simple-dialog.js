@@ -19,6 +19,8 @@ class SimpleDialog extends Component {
       title,
       isOpen,
       content,
+      actionable,
+      disableSubmit,
     } = this.props;
 
     const customContentStyle = {
@@ -30,7 +32,7 @@ class SimpleDialog extends Component {
       padding: 0,
     };
 
-    const actions = [
+    const actions = actionable ? [
       <FlatButton
         label={cancelText}
         primary={false}
@@ -40,8 +42,9 @@ class SimpleDialog extends Component {
         label={submitText}
         primary={true}
         onTouchTap={onDialogClose}
+        disabled={disableSubmit}
       />,
-    ];
+    ] : [];
 
     return (
       <Dialog
@@ -64,6 +67,8 @@ SimpleDialog.propTypes = {
   cancelText: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.node,
+  actionable: PropTypes.bool,
+  disableSubmit: PropTypes.bool,
   onDialogClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
 };
@@ -73,6 +78,8 @@ SimpleDialog.defaultProps = {
   cancelText: 'Cancel',
   title: '',
   content: <div/>,
+  actionable: true,
+  disableSubmit: false,
 };
 
 export default SimpleDialog;
