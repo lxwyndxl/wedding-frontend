@@ -39,7 +39,6 @@ class SimpleDialog extends Component {
       <FlatButton
         label={submitText}
         primary={true}
-        keyboardFocused={true}
         onTouchTap={onDialogClose}
       />,
     ];

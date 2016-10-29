@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { showRsvpModal } from '../actions/show-rsvp-modal';
+import { showRsvpPasscodeModal } from '../actions/show-rsvp-modal';
 import Scroll from 'react-scroll';
 import '../../stylesheets/components/nav.css';
 
@@ -52,7 +52,7 @@ class Nav extends Component {
 
   onRsvpClick(evt) {
     evt.preventDefault();
-    this.props.dispatch(showRsvpModal());
+    this.props.dispatch(showRsvpPasscodeModal());
   }
 
   render() {
