@@ -1,1 +1,1 @@
-export const PASSCODE_LENGTH = 6;
+export const PASSCODE_LENGTH = 4;
