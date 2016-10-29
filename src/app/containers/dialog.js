@@ -13,6 +13,8 @@ const mapStateToProps = (state) => {
     isOpen: modalType != null,
     title: modalProps.title,
     content: modalProps.content,
+    actionable: modalProps.actionable,
+    disableSubmit: modalProps.disableSubmit,
   };
 };
 
