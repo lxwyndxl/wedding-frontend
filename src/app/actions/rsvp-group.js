@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { apiUrl } from '../constants/helpers';
+import { showRsvpContentModal } from './show-rsvp-modal';
 
 export const requestRsvpGroup = () => {
   return {
@@ -10,7 +11,7 @@ export const requestRsvpGroup = () => {
 export const receiveRsvpGroup = ({ user_group, users }) => {
   return {
     type: 'RECEIVE_RSVP_GROUP',
-    userGroup: user_group,
+    userGroup: user_group.user_group,
     users,
   };
 };
@@ -21,6 +22,12 @@ export const errorRsvpGroup = (err) => {
   };
 };
 
+function canShowRsvpContent(json, dispatch) {
+  if (Object.keys(json.userGroup).length > 0) {
+    dispatch(showRsvpContentModal());
+  }
+}
+
 export const fetchRsvpGroup = (code) => {
   const FETCH_URL = apiUrl(`rsvp/show/${code}`);
 
@@ -28,6 +35,7 @@ export const fetchRsvpGroup = (code) => {
     return fetch(FETCH_URL)
       .then(response => response.json())
       .then(json => dispatch(receiveRsvpGroup(json)))
+      .then(json => canShowRsvpContent(json, dispatch))
       .catch(err => dispatch(errorRsvpGroup(err)));
   }
 

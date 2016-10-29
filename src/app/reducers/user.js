@@ -12,13 +12,13 @@ const user = (state = initialState, action) => {
         isFetching: true,
         error: false,
       });
-    case 'RECEIEVE_RSVP_GROUP':
-      return {
+    case 'RECEIVE_RSVP_GROUP':
+      return Object.assign({}, state, {
         userGroup: action.userGroup,
         users: action.users,
         isFetching: false,
         error: false,
-      };
+      });
     case 'ERROR_RSVP_GROUP':
       return Object.assign({}, state, {
         error: true,

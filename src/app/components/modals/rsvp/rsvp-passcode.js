@@ -39,17 +39,6 @@ class RsvpPasscode extends Component {
     this.onPasscodeEnter = this.onPasscodeEnter.bind(this);
   }
 
-  componentWillMount() {
-    const {
-      shouldRenderRsvpGroup,
-      loadRsvpContentModal,
-    } = this.props;
-
-    if (shouldRenderRsvpGroup) {
-      loadRsvpContentModal();
-    }
-  }
-
   onPasscodeEnter(evt) {
     let inputs = ReactDOM.findDOMNode(this.refs.passcodeFields).children;
     let code = '';
@@ -115,10 +104,8 @@ class RsvpPasscode extends Component {
 
 RsvpPasscode.propTypes = {
   onPasscodeReady: PropTypes.func,
-  userGroup: PropTypes.object,
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
-  shouldRenderRsvpGroup: PropTypes.bool,
 };
 
 export default RsvpPasscode;
