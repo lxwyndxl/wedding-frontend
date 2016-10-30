@@ -15,7 +15,7 @@ const store = configureStore();
 
 const muiTheme = getMuiTheme({
   checkbox: {
-    checkedColor: '#fff',
+    checkedColor: '#44a5c9',
   },
 });
 

@@ -21,7 +21,6 @@ const rsvpModalProps = {
   modalProps: {
     title: 'RSVP Now',
     content: <RsvpContent />,
-    disableSubmit: true,
   },
 };
 

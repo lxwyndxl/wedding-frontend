@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-details.css';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -12,6 +12,11 @@ import sunday from '../../../../images/rsvp/sunday.png';
 
 class RsvpDetails extends Component {
   render() {
+    const {
+      tier,
+      notes,
+    } = this.props.userGroup;
+
     const items = [];
 
     for (let i = 0; i < 7; i++ ) {
@@ -44,14 +49,18 @@ class RsvpDetails extends Component {
           <p className="details-prompt">Our wedding is a desintation wedding.</p>
           <p className="details-prompt">Which nights will your party stay?</p>
           <div className="overnight-preferences-checkboxes">
-            <div className="rsvp-day-section">
-              <div className="rsvp-day-image-wrapper">
-                <img src={friday} className="rsvp-day" alt="Friday, Sep 01 2017" />
+            {
+              tier === 0 &&
+
+              <div className="rsvp-day-section">
+                <div className="rsvp-day-image-wrapper">
+                  <img src={friday} className="rsvp-day" alt="Friday, Sep 01 2017" />
+                </div>
+                <div className="attendee-going">
+                  <Checkbox/>
+                </div>
               </div>
-              <div className="attendee-going">
-                <Checkbox/>
-              </div>
-            </div>
+            }
 
             <div className="rsvp-day-section">
               <div className="rsvp-day-image-wrapper">
@@ -82,6 +91,7 @@ class RsvpDetails extends Component {
               multiLine={true}
               rows={1}
               rowsMax={4}
+              defaultValue={notes}
             />
           </div>
         </div>
@@ -89,5 +99,9 @@ class RsvpDetails extends Component {
     );
   }
 }
+
+RsvpDetails.propTypes = {
+  userGroup: PropTypes.object.isRequired,
+};
 
 export default RsvpDetails;
