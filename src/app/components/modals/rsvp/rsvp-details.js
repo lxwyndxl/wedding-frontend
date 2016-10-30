@@ -56,7 +56,7 @@ class RsvpDetails extends Component {
                 <div className="rsvp-day-image-wrapper">
                   <img src={friday} className="rsvp-day" alt="Friday, Sep 01 2017" />
                 </div>
-                <div className="attendee-going">
+                <div className="attendee-staying">
                   <Checkbox/>
                 </div>
               </div>
@@ -66,7 +66,7 @@ class RsvpDetails extends Component {
               <div className="rsvp-day-image-wrapper">
                 <img src={saturday} className="rsvp-day" alt="Saturday, Sep 02 2017" />
               </div>
-              <div className="attendee-going">
+              <div className="attendee-staying">
                 <Checkbox/>
               </div>
             </div>
@@ -75,7 +75,7 @@ class RsvpDetails extends Component {
               <div className="rsvp-day-image-wrapper">
                 <img src={sunday} className="rsvp-day" alt="Sunday, Sep 03 2017" />
               </div>
-              <div className="attendee-going">
+              <div className="attendee-staying">
                 <Checkbox/>
               </div>
             </div>

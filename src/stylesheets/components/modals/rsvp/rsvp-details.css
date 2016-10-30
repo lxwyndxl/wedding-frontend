@@ -1,5 +1,6 @@
 .rsvp-details {
   width: 30%;
+  min-height: 375px;
   background: #efefef;
 }
 
@@ -32,7 +33,7 @@
   margin-top: 20px;
 }
 
-.attendee-going {
+.attendee-staying {
   width: 24px;
   overflow: hidden;
   margin-top: 10px;
