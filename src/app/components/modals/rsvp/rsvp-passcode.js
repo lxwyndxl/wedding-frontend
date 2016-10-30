@@ -14,7 +14,8 @@ export function PasscodeField({ count, onPasscodeEnter, isDisabled }) {
   const inputStyle = {
     textAlign: 'center',
     fontSize: 35,
-    height: 35
+    height: 35,
+    textTransform: 'capitalize',
   };
 
   const textFieldName = "passcode-" + count;
@@ -47,12 +48,20 @@ class RsvpPasscode extends Component {
     inputs.forEach(input => code += input.firstChild.value);
 
     if (code.length === PASSCODE_LENGTH) {
-      this.props.onPasscodeReady(code);
+      this.props.onPasscodeReady(code.toUpperCase());
 
-    } else if (evt.keyCode !== 8) {
-      const next = evt.target
-                      .parentElement
-                      .nextSibling;
+    } else {
+      let next = evt.target.parentElement;
+
+      // backspace
+      if (evt.keyCode === 8) {
+        next = next.previousSibling;
+        if (next) {
+          next.children[0].value = "";
+        }
+      } else {
+        next = next.nextSibling;
+      }
 
       if (next) {
         next.children[0].focus();
@@ -72,7 +81,7 @@ class RsvpPasscode extends Component {
     }
 
     return (
-      <aside className="rsvp-modal">
+      <aside className="rsvp-passcode-modal">
         <div className="rsvp-passcode">
           <div className="rsvp-prompt">
             <p>Please enter your group's rsvp code.</p>

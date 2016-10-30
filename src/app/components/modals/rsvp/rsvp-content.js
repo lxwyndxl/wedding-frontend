@@ -14,7 +14,7 @@ class RsvpContent extends Component {
     } = this.props;
 
     return (
-      <aside className="rsvp-modal">
+      <aside className="rsvp-content-modal">
         <header>
           <img src={headerImage} className="header-image" role="presentation"/>
           You're invited to celebrate our wedding!

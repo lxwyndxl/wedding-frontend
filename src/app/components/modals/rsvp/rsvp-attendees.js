@@ -6,7 +6,7 @@ import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
 
 export function Attendee({ name, email, isAttending, onCheck }) {
-  const initial = name[0];
+  const initial = name[0].toUpperCase();
 
   return (
     <li className={cx('rsvp-attendee', {'attending': isAttending})}>
