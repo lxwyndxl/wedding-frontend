@@ -1,38 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
 
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
-import { green500 } from 'material-ui/styles/colors';
-
-const DATA = [
-  {
-    name: 'Misty Kasumi',
-    email: 'mistykasumi@gmail.com',
-    isAttending: false,
-  },
-  {
-    name: 'Ash Ketchum',
-    email: 'ashketchum@gmail.com',
-    isAttending: true,
-  },
-  {
-    name: 'Brock Takeshi',
-    email: 'brocktakeshki@gmail.com',
-    isAttending: true,
-  },
-  {
-    name: 'Gary Oak',
-    email: 'garyoak@gmail.com',
-    isAttending: false,
-  },
-  {
-    name: 'Professor Oak',
-    email: 'profoak@gmail.com',
-    isAttending: true,
-  },
-];
 
 export function Attendee({ name, email, isAttending, onCheck }) {
   const initial = name[0];
@@ -40,7 +11,7 @@ export function Attendee({ name, email, isAttending, onCheck }) {
   return (
     <li className={cx('rsvp-attendee', {'attending': isAttending})}>
       <Avatar
-        backgroundColor={green500}
+        backgroundColor="#44a5c9"
         size={50}
         className="attendee-avatar"
       >
@@ -78,6 +49,14 @@ class RsvpAttendees extends Component {
   }
 
   render() {
+    const {
+      address_line1,
+      address_line2,
+      city,
+      state,
+      zipcode,
+    } = this.props.userGroup;
+
     return (
       <section className="rsvp-attendees">
         <p className="rsvp-attendees-prompt">
@@ -85,12 +64,13 @@ class RsvpAttendees extends Component {
         </p>
         <ul className="rsvp-attendee-list">
           {
-            DATA.map((attendee, index) => {
+            this.props.users.map((user, index) => {
+              const attendee = user.user;
               return (
                 <Attendee
-                  name={attendee.name}
+                  name={attendee.first_name + " " + attendee.last_name}
                   email={attendee.email}
-                  isAttending={attendee.isAttending}
+                  isAttending={attendee.is_attending}
                   onCheck={this.onCheck}
                   key={index}
                 />
@@ -101,9 +81,9 @@ class RsvpAttendees extends Component {
         <div className="group-address">
           <h3 className="address-title">Address</h3>
           <div className="address-text">
-            <p className="address line1">2089 Pacific Blvd</p>
-            <p className="address line2">Apt 214</p>
-            <p className="address line3">San Mateo, CA 94403</p>
+            <p className="address line1">{address_line1}</p>
+            <p className="address line2">{address_line2}</p>
+            <p className="address line3">{`${city}, ${state} ${zipcode}`}</p>
           </div>
           <p className="address edit">
             <a href="#" className="edit-address">
@@ -115,5 +95,10 @@ class RsvpAttendees extends Component {
     );
   }
 }
+
+RsvpAttendees.propTypes = {
+  userGroup: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
+};
 
 export default RsvpAttendees;
