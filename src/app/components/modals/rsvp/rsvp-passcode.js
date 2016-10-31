@@ -84,7 +84,7 @@ class RsvpPasscode extends Component {
       <aside className="rsvp-passcode-modal">
         <div className="rsvp-passcode">
           <div className="rsvp-prompt">
-            <p>Please enter your group's rsvp code.</p>
+            <p>Please enter your group’s rsvp code.</p>
             {
               error &&
               <p className="error">Incorrect code, please try again.</p>
