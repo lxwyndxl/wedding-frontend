@@ -17,7 +17,7 @@ class RsvpContent extends Component {
       <aside className="rsvp-content-modal">
         <header>
           <img src={headerImage} className="header-image" role="presentation"/>
-          You're invited to celebrate our wedding!
+          You’re invited to celebrate our wedding!
         </header>
         <section className="rsvp-body">
           <RsvpAttendees
@@ -26,6 +26,7 @@ class RsvpContent extends Component {
           />
           <RsvpDetails
             userGroup={userGroup}
+            users={users}
           />
         </section>
       </aside>

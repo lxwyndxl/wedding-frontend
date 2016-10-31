@@ -1,5 +1,5 @@
 import React from 'react';
-import { showModal } from '../actions/show-modal';
+import { showModal } from '../actions/modal';
 import RsvpPasscode from '../containers/modals/rsvp-passcode';
 import RsvpContent from '../containers/modals/rsvp-content';
 

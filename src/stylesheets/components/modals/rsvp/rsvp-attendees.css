@@ -27,8 +27,7 @@
 }
 
 .rsvp-attendee.attending {
-  border: 2px solid #44a5c9;
-  height: 66px;
+  outline: 2px solid #44a5c9;
 }
 
 .attendee-avatar {

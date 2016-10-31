@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import modal from './modal';
-import user from './user';
+import rsvp from './rsvp';
 
 const Reducers = combineReducers({
   modal,
-  user,
+  rsvp,
 });
 
 export default Reducers;
