@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
 
-import { updateAttendingStatus,
-         toggleEmailEditState } from '../../../actions/rsvp-attendees';
+import { updateAttendingStatus } from '../../../actions/rsvp-attendees';
 
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';

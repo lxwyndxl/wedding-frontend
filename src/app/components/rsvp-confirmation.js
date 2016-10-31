@@ -36,6 +36,11 @@ function AttendeeList({
   );
 }
 
+AttendeeList.propTypes = {
+  subheader: PropTypes.string.isRequired,
+  users: PropTypes.array.isRequired,
+};
+
 function Lodging({ userGroup }) {
   const {
     lodging_friday,
@@ -72,6 +77,10 @@ function Lodging({ userGroup }) {
     </div>
   );
 }
+
+Lodging.propTypes = {
+  userGroup: PropTypes.object.isRequired,
+};
 
 export default class RsvpConfirmation extends Component {
   componentWillMount() {
