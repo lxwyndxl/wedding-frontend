@@ -17,9 +17,11 @@ class RsvpDetails extends Component {
       notes,
     } = this.props.userGroup;
 
+    const users = this.props.users;
+
     const items = [];
 
-    for (let i = 0; i < 7; i++ ) {
+    for (let i = 0; i <= users.length; i++ ) {
       items.push(
         <MenuItem
           value={i}
@@ -102,6 +104,7 @@ class RsvpDetails extends Component {
 
 RsvpDetails.propTypes = {
   userGroup: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
 };
 
 export default RsvpDetails;

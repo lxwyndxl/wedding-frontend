@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hideModal } from '../actions/hide-modal';
+import { hideModal } from '../actions/modal';
 
 import SimpleDialog from '../components/common/simple-dialog';
 

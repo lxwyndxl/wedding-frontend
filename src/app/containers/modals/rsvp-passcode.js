@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const {
     isFetching,
     error,
-  } = state.user;
+  } = state.rsvp.request;
 
   return {
     isFetching,

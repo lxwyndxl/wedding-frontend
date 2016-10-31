@@ -26,6 +26,7 @@ class RsvpContent extends Component {
           />
           <RsvpDetails
             userGroup={userGroup}
+            users={users}
           />
         </section>
       </aside>
