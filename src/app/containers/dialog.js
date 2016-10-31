@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { hideModal } from '../actions/hide-modal';
+import { hideModal } from '../actions/modal';
 
 import SimpleDialog from '../components/common/simple-dialog';
 
@@ -34,4 +34,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SimpleDialog);
-

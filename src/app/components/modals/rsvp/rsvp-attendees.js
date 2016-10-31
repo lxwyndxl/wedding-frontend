@@ -1,12 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
+
+import { updateAttendingStatus,
+         toggleEmailEditState } from '../../../actions/rsvp-attendees';
 
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
 
-export function Attendee({ name, email, isAttending, onCheck }) {
+export function Attendee({ name, email, isAttending, onCheck, id }) {
   const initial = name[0].toUpperCase();
+  const checkboxName = `user-${id}`;
 
   return (
     <li className={cx('rsvp-attendee', {'attending': isAttending})}>
@@ -37,6 +42,7 @@ export function Attendee({ name, email, isAttending, onCheck }) {
         <Checkbox
           defaultChecked={isAttending}
           onCheck={onCheck}
+          name={checkboxName}
         />
       </div>
     </li>
@@ -44,8 +50,15 @@ export function Attendee({ name, email, isAttending, onCheck }) {
 };
 
 class RsvpAttendees extends Component {
+  constructor(props) {
+    super(props);
+    this.onCheck = this.onCheck.bind(this);
+    this.dispatch = props.dispatch;
+  }
+
   onCheck(evt, isInputChecked) {
-    console.log('switch', isInputChecked.toString());
+    const userId = parseInt(evt.target.name.split('-')[1], 10);
+    this.dispatch(updateAttendingStatus(userId, isInputChecked));
   }
 
   render() {
@@ -65,13 +78,13 @@ class RsvpAttendees extends Component {
         <ul className="rsvp-attendee-list">
           {
             this.props.users.map((user, index) => {
-              const attendee = user.user;
               return (
                 <Attendee
-                  name={attendee.first_name + " " + attendee.last_name}
-                  email={attendee.email}
-                  isAttending={attendee.is_attending}
+                  name={user.first_name + " " + user.last_name}
+                  email={user.email}
+                  isAttending={user.is_attending}
                   onCheck={this.onCheck}
+                  id={user.id}
                   key={index}
                 />
               )
@@ -100,5 +113,7 @@ RsvpAttendees.propTypes = {
   userGroup: PropTypes.object.isRequired,
   users: PropTypes.array.isRequired,
 };
+
+RsvpAttendees = connect()(RsvpAttendees);
 
 export default RsvpAttendees;

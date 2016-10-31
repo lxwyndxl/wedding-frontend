@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
   const {
     userGroup,
     users,
-  } = state.user;
+  } = state.rsvp;
 
   return {
     userGroup,

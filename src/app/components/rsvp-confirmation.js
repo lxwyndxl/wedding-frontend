@@ -9,7 +9,7 @@ export default class RsvpConfirmation extends Component {
     this._totalAttendees = -1;
     if (users.length > 0) {
       this._totalAttendees = props.users.reduce((totalAttendees, user) => {
-        return totalAttendees + user.user.is_attending;
+        return totalAttendees + user.is_attending;
       });
     }
   }
