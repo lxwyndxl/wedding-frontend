@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-details.css';
 
-import { updateAttendingDay } from '../../../actions/rsvp-details';
+import {
+  updateAttendingDay,
+  updateNote,
+  updateVegi
+} from '../../../actions/rsvp-details';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,13 +21,23 @@ import sunday from '../../../../images/rsvp/sunday.png';
 class RsvpDetails extends Component {
   constructor(props) {
     super(props);
-    this.onCheck = this.onCheck.bind(this);
+    this.onDayCheck = this.onDayCheck.bind(this);
+    this.onNoteChange = this.onNoteChange.bind(this);
+    this.onVegiChange = this.onVegiChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
-  onCheck(evt, isInputChecked) {
+  onDayCheck(evt, isInputChecked) {
     const day = evt.target.name;
     this.dispatch(updateAttendingDay(day, isInputChecked));
+  }
+
+  onNoteChange(evt, text) {
+    this.dispatch(updateNote(text));
+  }
+
+  onVegiChange(evt, key, payload) {
+    this.dispatch(updateVegi(payload));
   }
 
   render() {
@@ -33,6 +47,7 @@ class RsvpDetails extends Component {
       lodging_friday,
       lodging_saturday,
       lodging_sunday,
+      vegi,
     } = this.props.userGroup;
 
     const { users } = this.props;
@@ -58,7 +73,8 @@ class RsvpDetails extends Component {
           <div className="meal-preferences-dropdown">
             <DropDownMenu
               maxHeight={280}
-              value={0}
+              value={vegi || 0}
+              onChange={this.onVegiChange}
             >
               {items}
             </DropDownMenu>
@@ -79,7 +95,7 @@ class RsvpDetails extends Component {
                 <div className="attendee-staying">
                   <Checkbox
                     defaultChecked={lodging_friday}
-                    onCheck={this.onCheck}
+                    onCheck={this.onDayCheck}
                     name="friday"
                     id="friday"
                   />
@@ -94,7 +110,7 @@ class RsvpDetails extends Component {
               <div className="attendee-staying">
                 <Checkbox
                   defaultChecked={lodging_saturday}
-                  onCheck={this.onCheck}
+                  onCheck={this.onDayCheck}
                   name="saturday"
                   id="saturday"
                 />
@@ -108,7 +124,7 @@ class RsvpDetails extends Component {
               <div className="attendee-staying">
                 <Checkbox
                   defaultChecked={lodging_sunday}
-                  onCheck={this.onCheck}
+                  onCheck={this.onDayCheck}
                   name="sunday"
                   id="sunday"
                 />
@@ -127,6 +143,7 @@ class RsvpDetails extends Component {
               rows={1}
               rowsMax={4}
               defaultValue={notes}
+              onChange={this.onNoteChange}
             />
           </div>
         </div>
