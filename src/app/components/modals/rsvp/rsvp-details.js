@@ -17,7 +17,7 @@ class RsvpDetails extends Component {
       notes,
     } = this.props.userGroup;
 
-    const users = this.props.users;
+    const { users } = this.props;
 
     const items = [];
 
