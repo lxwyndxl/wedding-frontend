@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import users from './users';
 import userGroup from './user-group';
+import { REQUEST_RSVP_GROUP,
+         RECEIVE_RSVP_GROUP,
+         ERROR_RSVP_GROUP } from '../actions/constants';
 
 const initialState = {
   isFetching: false,
@@ -9,19 +12,19 @@ const initialState = {
 
 const request = (state = initialState, action) => {
   switch (action.type) {
-    case 'REQUEST_RSVP_GROUP':
+    case REQUEST_RSVP_GROUP:
       return Object.assign({}, state, {
         isFetching: true,
         error: false,
       });
 
-    case 'RECEIVE_RSVP_GROUP':
+    case RECEIVE_RSVP_GROUP:
       return Object.assign({}, state, {
         isFetching: false,
         error: false,
       });
 
-    case 'ERROR_RSVP_GROUP':
+    case ERROR_RSVP_GROUP:
       return Object.assign({}, state, {
         error: true,
         isFetching: false,

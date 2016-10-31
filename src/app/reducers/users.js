@@ -1,11 +1,15 @@
+import { RECEIVE_RSVP_GROUP,
+         UPDATE_ATTENDING_STATUS,
+         TOGGLE_EMAIL_EDIT_STATE } from '../actions/constants';
+
 const initialState = [];
 
 const users = (state = initialState, action) => {
   switch (action.type) {
-    case 'RECEIVE_RSVP_GROUP':
+    case RECEIVE_RSVP_GROUP:
       return action.users;
 
-    case 'UPDATE_ATTENDING_STATUS':
+    case UPDATE_ATTENDING_STATUS:
       return state.map((user) => {
         if (user.id === action.userId) {
           return Object.assign({}, user, {
@@ -16,7 +20,7 @@ const users = (state = initialState, action) => {
         }
       });
 
-    case 'TOGGLE_EMAIL_EDIT_STATE':
+    case TOGGLE_EMAIL_EDIT_STATE:
       return state.map((user) => {
 
       });
