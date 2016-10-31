@@ -87,7 +87,7 @@ class RsvpAttendees extends Component {
                   id={user.id}
                   key={index}
                 />
-              )
+              );
             })
           }
         </ul>

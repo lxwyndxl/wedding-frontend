@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import Content from '../components/rsvp-confirmation';
 import { showRsvpPasscodeModal } from '../actions/show-rsvp-modal';
 
@@ -18,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onRsvpClick: (code) => {
       dispatch(showRsvpPasscodeModal());
+    },
+    onRouteToHomepage: () => {
+      dispatch(push('/'));
     },
   };
 };
