@@ -84,7 +84,7 @@ class RsvpPasscode extends Component {
       <aside className="rsvp-passcode-modal">
         <div className="rsvp-passcode">
           <div className="rsvp-prompt">
-            <p>Please enter your group's rsvp code.</p>
+            <p>Please enter your group’s rsvp code.</p>
             {
               error &&
               <p className="error">Incorrect code, please try again.</p>
@@ -112,9 +112,14 @@ class RsvpPasscode extends Component {
 }
 
 RsvpPasscode.propTypes = {
-  onPasscodeReady: PropTypes.func,
+  onPasscodeReady: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
+};
+
+RsvpPasscode.defaultProps = {
+  isFetching: false,
+  error: false,
 };
 
 export default RsvpPasscode;

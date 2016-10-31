@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { hideModal } from '../actions/hide-modal';
 
 import SimpleDialog from '../components/common/simple-dialog';
@@ -22,13 +23,15 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onDialogClose: () => {
       dispatch(hideModal());
-    }
+    },
+    onRouteToConfirmation: () => {
+      dispatch(push('/rsvp'));
+    },
   };
 };
 
-const Dialog = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SimpleDialog);
 
-export default Dialog;
