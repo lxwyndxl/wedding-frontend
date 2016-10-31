@@ -57,36 +57,39 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="nav">
-        <ul className="nav-item-container max-width">
-          <li className="nav-item home">
-            <a href="/">
-              <img src={logo} className="logo" alt="logo for bride and groom" />
-            </a>
-          </li>
+      <div>
+        <nav className="nav">
+          <ul className="nav-item-container max-width">
+            <li className="nav-item home">
+              <a href="/">
+                <img src={logo} className="logo" alt="logo for bride and groom" />
+              </a>
+            </li>
 
-          {
-            SCROLLABLE_HEADER_NAV_ANCHORS.map((anchor, index) => {
-              return (
-                <HeaderNavScrollableAnchor
-                  text={anchor.text}
-                  anchorId={anchor.anchorId}
-                  key={index}
-                />
-              );
-            })
-          }
+            {
+              SCROLLABLE_HEADER_NAV_ANCHORS.map((anchor, index) => {
+                return (
+                  <HeaderNavScrollableAnchor
+                    text={anchor.text}
+                    anchorId={anchor.anchorId}
+                    key={index}
+                  />
+                );
+              })
+            }
 
-          <li
-            className="nav-item"
-            onClick={this.onRsvpClick.bind(this)}
-          >
-            <a href="#">
-              RSVP
-            </a>
-          </li>
-        </ul>
-      </nav>
+            <li
+              className="nav-item"
+              onClick={this.onRsvpClick.bind(this)}
+            >
+              <a href="#">
+                RSVP
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div className="nav-height-holder" />
+      </div>
     );
   }
 }

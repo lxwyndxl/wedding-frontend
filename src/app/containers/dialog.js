@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { connect } from 'react-redux';
 import { hideModal } from '../actions/hide-modal';
 
@@ -26,9 +28,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const Dialog = connect(
+SimpleDialog.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+};
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SimpleDialog);
 
-export default Dialog;

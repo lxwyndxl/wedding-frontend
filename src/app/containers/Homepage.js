@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Scroll from 'react-scroll';
 import '../../stylesheets/components/App.css';
 
-import HeaderNav from '../components/nav';
 import Hero from '../components/hero';
 import Cta from '../components/cta';
 import About from '../components/about';
@@ -11,15 +10,13 @@ import Bridesmaids from '../components/bridesmaids';
 import Groomsmen from '../components/groomsmen';
 import OtherParty from '../components/other-party';
 import DayOf from '../components/day-of';
-import Dialog from './dialog';
 
 const Element = Scroll.Element;
 
-class App extends Component {
+class Homepage extends Component {
   render() {
     return (
-      <div className="App">
-        <HeaderNav />
+      <div>
         <Hero />
         <Cta />
         <section className="bride-and-groom scrollable">
@@ -40,10 +37,9 @@ class App extends Component {
             <DayOf />
           </Element>
         </section>
-        <Dialog />
       </div>
     );
   }
 }
 
-export default App;
+export default Homepage;
