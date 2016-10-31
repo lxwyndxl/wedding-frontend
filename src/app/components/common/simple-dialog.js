@@ -10,14 +10,14 @@ import FlatButton from 'material-ui/FlatButton';
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class SimpleDialog extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.onDialogSubmit = this.onDialogSubmit.bind(this);
   }
 
   onDialogSubmit() {
     this.props.onDialogClose();
-    this.context.router.push('/rsvp');
+    this.props.onRouteToConfirmation();
   }
 
   render() {
