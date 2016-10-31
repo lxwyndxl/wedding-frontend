@@ -1,5 +1,7 @@
-import { RECEIVE_RSVP_GROUP,
-         UPDATE_ATTENDING_DAY } from '../actions/constants';
+import {
+  RECEIVE_RSVP_GROUP,
+  UPDATE_ATTENDING_DAY
+} from '../actions/constants';
 
 const initialState = {};
 
@@ -9,22 +11,9 @@ const userGroup = (state = initialState, action) => {
       return action.userGroup;
 
     case UPDATE_ATTENDING_DAY:
-      switch(action.day) {
-        case 'friday':
-          return Object.assign({}, state, {
-            lodging_friday: action.status,
-          });
-        case 'saturday':
-          return Object.assign({}, state, {
-            lodging_saturday: action.status,
-          });
-        case 'sunday':
-          return Object.assign({}, state, {
-            lodging_sunday: action.status,
-          });
-        default:
-          return state
-      }
+      return Object.assign({}, state, {
+        [`lodging_${action.day}`]: action.status,
+      });
 
     default:
       return state;

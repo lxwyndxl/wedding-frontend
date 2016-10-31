@@ -73,41 +73,44 @@ class RsvpDetails extends Component {
               tier === 0 &&
 
               <div className={cx('rsvp-day-section', {'checked': lodging_friday})}>
-                <div className="rsvp-day-image-wrapper">
+                <label className="rsvp-day-image-wrapper" htmlFor="friday">
                   <img src={friday} className="rsvp-day" alt="Friday, Sep 01 2017" />
-                </div>
+                </label>
                 <div className="attendee-staying">
                   <Checkbox
                     defaultChecked={lodging_friday}
                     onCheck={this.onCheck}
                     name="friday"
+                    id="friday"
                   />
                 </div>
               </div>
             }
 
             <div className={cx('rsvp-day-section', {'checked': lodging_saturday})}>
-              <div className="rsvp-day-image-wrapper">
+              <label className="rsvp-day-image-wrapper" htmlFor="saturday">
                 <img src={saturday} className="rsvp-day" alt="Saturday, Sep 02 2017" />
-              </div>
+              </label>
               <div className="attendee-staying">
                 <Checkbox
                   defaultChecked={lodging_saturday}
                   onCheck={this.onCheck}
                   name="saturday"
+                  id="saturday"
                 />
               </div>
             </div>
 
             <div className={cx('rsvp-day-section', {'checked': lodging_sunday})}>
-              <div className="rsvp-day-image-wrapper">
+              <label className="rsvp-day-image-wrapper" htmlFor="sunday">
                 <img src={sunday} className="rsvp-day" alt="Sunday, Sep 03 2017" />
-              </div>
+              </label>
               <div className="attendee-staying">
                 <Checkbox
                   defaultChecked={lodging_sunday}
                   onCheck={this.onCheck}
                   name="sunday"
+                  id="sunday"
                 />
               </div>
             </div>

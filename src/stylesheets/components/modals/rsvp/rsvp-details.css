@@ -54,6 +54,7 @@
   overflow: hidden;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
 }
 
 .rsvp-day {
