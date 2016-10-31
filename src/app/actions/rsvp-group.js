@@ -1,4 +1,8 @@
-import { REQUEST_RSVP_GROUP, RECEIVE_RSVP_GROUP, ERROR_RSVP_GROUP } from './constants';
+import {
+  REQUEST_RSVP_GROUP,
+  RECEIVE_RSVP_GROUP,
+  ERROR_RSVP_GROUP
+} from './constants';
 import fetch from 'isomorphic-fetch';
 import { apiUrl } from '../constants/helpers';
 import { showRsvpContentModal } from './show-rsvp-modal';

@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import users from './users';
 import userGroup from './user-group';
-import { REQUEST_RSVP_GROUP,
-         RECEIVE_RSVP_GROUP,
-         ERROR_RSVP_GROUP } from '../actions/constants';
+import {
+  REQUEST_RSVP_GROUP,
+  RECEIVE_RSVP_GROUP,
+  ERROR_RSVP_GROUP
+} from '../actions/constants';
 
 const initialState = {
   isFetching: false,

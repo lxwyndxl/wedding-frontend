@@ -1,6 +1,8 @@
-import { RECEIVE_RSVP_GROUP,
-         UPDATE_ATTENDING_STATUS,
-         TOGGLE_EMAIL_EDIT_STATE } from '../actions/constants';
+import {
+  RECEIVE_RSVP_GROUP,
+  UPDATE_ATTENDING_STATUS,
+  TOGGLE_EMAIL_EDIT_STATE
+} from '../actions/constants';
 
 const initialState = [];
 
