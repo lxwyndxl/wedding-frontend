@@ -54,7 +54,7 @@ ReactDOM.render(
   <Router history={browserHistory} onUpdate={logPageView}>
     <Route path="/" component={Application}>
       <IndexRoute component={Homepage} />
-      <Route path="rsvp" component={RsvpConfirmation} />
+      <Route path="rsvp-confirmation" component={RsvpConfirmation} />
     </Route>
   </Router>,
   document.getElementById('root')

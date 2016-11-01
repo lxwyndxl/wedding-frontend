@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(hideModal());
     },
     onRouteToConfirmation: () => {
-      dispatch(push('/rsvp'));
+      dispatch(push('/rsvp-confirmation'));
     },
   };
 };
