@@ -69,7 +69,7 @@ export function Attendee({
              data-user={id}
           >
             {
-              isEditing ? 'save'
+              isEditing ? 'done'
                         : (email ? 'edit' : 'add email')
             }
           </a>
