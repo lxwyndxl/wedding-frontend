@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-details.css';
 
-import { updateAttendingDay } from '../../../actions/rsvp-details';
+import {
+  updateAttendingDay,
+  updateNote,
+  updateDiet
+} from '../../../actions/rsvp-details';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -14,16 +18,44 @@ import friday from '../../../../images/rsvp/friday.png';
 import saturday from '../../../../images/rsvp/saturday.png';
 import sunday from '../../../../images/rsvp/sunday.png';
 
+export function DaySelection({ day, image, hasLodging, onCheck }) {
+  return (
+    <div className={cx('rsvp-day-section', {'checked': hasLodging})}>
+      <label className="rsvp-day-image-wrapper" htmlFor={day}>
+        <img src={image} className="rsvp-day" alt={day} />
+      </label>
+      <div className="attendee-staying">
+        <Checkbox
+          defaultChecked={hasLodging}
+          onCheck={onCheck}
+          name={day}
+          id={day}
+        />
+      </div>
+    </div>
+  );
+}
+
 class RsvpDetails extends Component {
   constructor(props) {
     super(props);
-    this.onCheck = this.onCheck.bind(this);
+    this.onDayCheck = this.onDayCheck.bind(this);
+    this.onNoteChange = this.onNoteChange.bind(this);
+    this.onDietChange = this.onDietChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
-  onCheck(evt, isInputChecked) {
+  onDayCheck(evt, isInputChecked) {
     const day = evt.target.name;
     this.dispatch(updateAttendingDay(day, isInputChecked));
+  }
+
+  onNoteChange(evt, text) {
+    this.dispatch(updateNote(text));
+  }
+
+  onDietChange(evt, key, payload) {
+    this.dispatch(updateDiet(payload));
   }
 
   render() {
@@ -33,6 +65,7 @@ class RsvpDetails extends Component {
       lodging_friday,
       lodging_saturday,
       lodging_sunday,
+      diet,
     } = this.props.userGroup;
 
     const { users } = this.props;
@@ -58,7 +91,8 @@ class RsvpDetails extends Component {
           <div className="meal-preferences-dropdown">
             <DropDownMenu
               maxHeight={280}
-              value={0}
+              value={diet || 0}
+              onChange={this.onDietChange}
             >
               {items}
             </DropDownMenu>
@@ -71,49 +105,27 @@ class RsvpDetails extends Component {
           <div className="overnight-preferences-checkboxes">
             {
               tier === 0 &&
-
-              <div className={cx('rsvp-day-section', {'checked': lodging_friday})}>
-                <label className="rsvp-day-image-wrapper" htmlFor="friday">
-                  <img src={friday} className="rsvp-day" alt="Friday, Sep 01 2017" />
-                </label>
-                <div className="attendee-staying">
-                  <Checkbox
-                    defaultChecked={lodging_friday}
-                    onCheck={this.onCheck}
-                    name="friday"
-                    id="friday"
-                  />
-                </div>
-              </div>
+              <DaySelection
+                day="friday"
+                image={friday}
+                hasLodging={lodging_friday}
+                onCheck={this.onDayCheck}
+              />
             }
 
-            <div className={cx('rsvp-day-section', {'checked': lodging_saturday})}>
-              <label className="rsvp-day-image-wrapper" htmlFor="saturday">
-                <img src={saturday} className="rsvp-day" alt="Saturday, Sep 02 2017" />
-              </label>
-              <div className="attendee-staying">
-                <Checkbox
-                  defaultChecked={lodging_saturday}
-                  onCheck={this.onCheck}
-                  name="saturday"
-                  id="saturday"
-                />
-              </div>
-            </div>
+            <DaySelection
+              day="saturday"
+              image={saturday}
+              hasLodging={lodging_saturday}
+              onCheck={this.onDayCheck}
+            />
 
-            <div className={cx('rsvp-day-section', {'checked': lodging_sunday})}>
-              <label className="rsvp-day-image-wrapper" htmlFor="sunday">
-                <img src={sunday} className="rsvp-day" alt="Sunday, Sep 03 2017" />
-              </label>
-              <div className="attendee-staying">
-                <Checkbox
-                  defaultChecked={lodging_sunday}
-                  onCheck={this.onCheck}
-                  name="sunday"
-                  id="sunday"
-                />
-              </div>
-            </div>
+            <DaySelection
+              day="sunday"
+              image={sunday}
+              hasLodging={lodging_sunday}
+              onCheck={this.onDayCheck}
+            />
           </div>
         </div>
 
@@ -127,6 +139,7 @@ class RsvpDetails extends Component {
               rows={1}
               rowsMax={4}
               defaultValue={notes}
+              onChange={this.onNoteChange}
             />
           </div>
         </div>
