@@ -64,6 +64,11 @@
   margin-top: 5px;
 }
 
+.email.edit.editing {
+  margin-top: 13px;
+  float: right;
+}
+
 .attendee-going {
   width: 24px;
   overflow: hidden;

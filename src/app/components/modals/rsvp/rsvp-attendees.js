@@ -4,14 +4,31 @@ import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
 
 import { updateAttendingStatus,
-         toggleEmailEditState } from '../../../actions/rsvp-attendees';
+         toggleEmailEditState,
+         updateUserEmail } from '../../../actions/rsvp-attendees';
 
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
 
-export function Attendee({ name, email, isAttending, onCheck, id }) {
+export function Attendee({
+  name,
+  email,
+  isAttending,
+  onCheck,
+  id,
+  onEmailEdit,
+  onEmailChange,
+  isEditing
+}) {
   const initial = name[0].toUpperCase();
   const checkboxName = `user-${id}`;
+  const emailInputName = `email-${id}`;
+  const inputStyle = {
+    fontSize: 13,
+    width: 200,
+    height: 38,
+  };
 
   return (
     <li className={cx('rsvp-attendee', {'attending': isAttending})}>
@@ -29,22 +46,48 @@ export function Attendee({ name, email, isAttending, onCheck, id }) {
       />
 
       <div className="attendee-data">
-        <p className="attendee-name">{name}</p>
-        <p className="attendee-email">{email}</p>
-        <p className="email edit">
-          <a href="#" className="edit-email">
-            edit
+        {
+          !isEditing && <p className="attendee-name">{name}</p>
+        }
+        {
+          isEditing ? <TextField
+                        defaultValue={email}
+                        className="attendee-email-edit"
+                        name={emailInputName}
+                        data-user={id}
+                        autoFocus={true}
+                        style={inputStyle}
+                        onChange={onEmailChange}
+                      />
+                    : <p className="attendee-email">{email}</p>
+        }
+
+        <p className={cx('email', 'edit', {'editing': isEditing})}>
+          <a href="#"
+             className="edit-email"
+             onClick={onEmailEdit}
+             data-user={id}
+          >
+            {
+              isEditing ? 'save'
+                        : (email ? 'edit' : 'add email')
+            }
           </a>
         </p>
       </div>
 
-      <div className="attendee-going">
-        <Checkbox
-          defaultChecked={isAttending}
-          onCheck={onCheck}
-          name={checkboxName}
-        />
-      </div>
+      {
+        !isEditing &&
+
+        <div className="attendee-going">
+          <Checkbox
+            defaultChecked={isAttending}
+            onCheck={onCheck}
+            data-user={id}
+            name={checkboxName}
+          />
+        </div>
+      }
     </li>
   );
 };
@@ -53,12 +96,25 @@ class RsvpAttendees extends Component {
   constructor(props) {
     super(props);
     this.onCheck = this.onCheck.bind(this);
+    this.onEmailEdit = this.onEmailEdit.bind(this);
+    this.onEmailChange = this.onEmailChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
   onCheck(evt, isInputChecked) {
-    const userId = parseInt(evt.target.name.split('-')[1], 10);
+    const userId = parseInt(evt.target.dataset.user, 10);
     this.dispatch(updateAttendingStatus(userId, isInputChecked));
+  }
+
+  onEmailEdit(evt) {
+    evt.preventDefault();
+    const userId = parseInt(evt.target.dataset.user, 10);
+    this.dispatch(toggleEmailEditState(userId));
+  }
+
+  onEmailChange(evt, text) {
+    const userId = parseInt(evt.target.dataset.user, 10);
+    this.dispatch(updateUserEmail(userId, text));
   }
 
   render() {
@@ -85,6 +141,9 @@ class RsvpAttendees extends Component {
                   isAttending={user.is_attending}
                   onCheck={this.onCheck}
                   id={user.id}
+                  onEmailEdit={this.onEmailEdit}
+                  onEmailChange={this.onEmailChange}
+                  isEditing={user.editMode}
                   key={index}
                 />
               )
