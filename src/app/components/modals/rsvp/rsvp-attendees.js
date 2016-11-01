@@ -3,17 +3,44 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
 
-import { updateAttendingStatus } from '../../../actions/rsvp-attendees';
+import {
+  updateAttendingStatus,
+  toggleEmailEditState,
+  updateUserEmail
+} from '../../../actions/rsvp-attendees';
 
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
 
-export function Attendee({ name, email, isAttending, onCheck, id }) {
+export function Attendee({
+  name,
+  email,
+  isAttending,
+  onCheck,
+  id,
+  onEmailEdit,
+  onEmailChange,
+  isEditing,
+}) {
   const initial = name[0].toUpperCase();
   const checkboxName = `user-${id}`;
+  const emailInputName = `email-${id}`;
+  const inputStyle = {
+    fontSize: 13,
+    width: 200,
+    height: 38,
+  };
+
+  let emailEditText = '';
+  if (isEditing) {
+    emailEditText = 'done';
+  } else {
+    emailEditText = email ? 'edit' : 'add email';
+  }
 
   return (
-    <li className={cx('rsvp-attendee', {'attending': isAttending})}>
+    <li className={cx('rsvp-attendee', { attending: isAttending })}>
       <Avatar
         backgroundColor="#44a5c9"
         size={50}
@@ -28,22 +55,44 @@ export function Attendee({ name, email, isAttending, onCheck, id }) {
       />
 
       <div className="attendee-data">
-        <p className="attendee-name">{name}</p>
-        <p className="attendee-email">{email}</p>
-        <p className="email edit">
-          <a href="#" className="edit-email">
-            edit
+        {
+          !isEditing && <p className="attendee-name">{name}</p>
+        }
+        {
+          isEditing ? <TextField
+                        defaultValue={email}
+                        className="attendee-email-edit"
+                        name={emailInputName}
+                        data-user-id={id}
+                        style={inputStyle}
+                        onChange={onEmailChange}
+                        autoFocus
+                      />
+                    : <p className="attendee-email">{email}</p>
+        }
+
+        <p className={cx('email edit', { editing: isEditing })}>
+          <a
+            href="#"
+            className="edit-email"
+            onClick={onEmailEdit}
+            data-user-id={id}
+          >
+            {emailEditText}
           </a>
         </p>
       </div>
 
-      <div className="attendee-going">
-        <Checkbox
-          defaultChecked={isAttending}
-          onCheck={onCheck}
-          name={checkboxName}
-        />
-      </div>
+      {!isEditing &&
+        <div className="attendee-going">
+          <Checkbox
+            defaultChecked={isAttending}
+            onCheck={onCheck}
+            data-user-id={id}
+            name={checkboxName}
+          />
+        </div>
+      }
     </li>
   );
 };
@@ -52,12 +101,25 @@ class RsvpAttendees extends Component {
   constructor(props) {
     super(props);
     this.onCheck = this.onCheck.bind(this);
+    this.onEmailEdit = this.onEmailEdit.bind(this);
+    this.onEmailChange = this.onEmailChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
   onCheck(evt, isInputChecked) {
-    const userId = parseInt(evt.target.name.split('-')[1], 10);
+    const userId = parseInt(evt.target.dataset.userId, 10);
     this.dispatch(updateAttendingStatus(userId, isInputChecked));
+  }
+
+  onEmailEdit(evt) {
+    evt.preventDefault();
+    const userId = parseInt(evt.target.dataset.userId, 10);
+    this.dispatch(toggleEmailEditState(userId));
+  }
+
+  onEmailChange(evt, text) {
+    const userId = parseInt(evt.target.dataset.userId, 10);
+    this.dispatch(updateUserEmail(userId, text));
   }
 
   render() {
@@ -84,6 +146,9 @@ class RsvpAttendees extends Component {
                   isAttending={user.is_attending}
                   onCheck={this.onCheck}
                   id={user.id}
+                  onEmailEdit={this.onEmailEdit}
+                  onEmailChange={this.onEmailChange}
+                  isEditing={user.isEditing}
                   key={index}
                 />
               );
