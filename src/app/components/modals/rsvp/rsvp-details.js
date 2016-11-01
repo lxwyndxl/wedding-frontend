@@ -6,7 +6,7 @@ import '../../../../stylesheets/components/modals/rsvp/rsvp-details.css';
 import {
   updateAttendingDay,
   updateNote,
-  updateVegi
+  updateDiet
 } from '../../../actions/rsvp-details';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -41,7 +41,7 @@ class RsvpDetails extends Component {
     super(props);
     this.onDayCheck = this.onDayCheck.bind(this);
     this.onNoteChange = this.onNoteChange.bind(this);
-    this.onVegiChange = this.onVegiChange.bind(this);
+    this.onDietChange = this.onDietChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
@@ -54,8 +54,8 @@ class RsvpDetails extends Component {
     this.dispatch(updateNote(text));
   }
 
-  onVegiChange(evt, key, payload) {
-    this.dispatch(updateVegi(payload));
+  onDietChange(evt, key, payload) {
+    this.dispatch(updateDiet(payload));
   }
 
   render() {
@@ -65,7 +65,7 @@ class RsvpDetails extends Component {
       lodging_friday,
       lodging_saturday,
       lodging_sunday,
-      vegi,
+      diet,
     } = this.props.userGroup;
 
     const { users } = this.props;
@@ -91,8 +91,8 @@ class RsvpDetails extends Component {
           <div className="meal-preferences-dropdown">
             <DropDownMenu
               maxHeight={280}
-              value={vegi || 0}
-              onChange={this.onVegiChange}
+              value={diet || 0}
+              onChange={this.onDietChange}
             >
               {items}
             </DropDownMenu>

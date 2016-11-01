@@ -1,7 +1,7 @@
 import {
   UPDATE_ATTENDING_DAY,
   UPDATE_NOTE,
-  UPDATE_VEGI
+  UPDATE_DIET
 } from './constants';
 
 export const updateAttendingDay = (day, status) => {
@@ -19,9 +19,9 @@ export const updateNote = (text) => {
   };
 };
 
-export const updateVegi = (count) => {
+export const updateDiet = (count) => {
   return {
-    type: UPDATE_VEGI,
+    type: UPDATE_DIET,
     count,
   };
 };

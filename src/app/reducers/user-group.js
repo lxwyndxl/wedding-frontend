@@ -2,7 +2,7 @@ import {
   RECEIVE_RSVP_GROUP,
   UPDATE_ATTENDING_DAY,
   UPDATE_NOTE,
-  UPDATE_VEGI
+  UPDATE_DIET
 } from '../actions/constants';
 
 const initialState = {};
@@ -22,9 +22,9 @@ const userGroup = (state = initialState, action) => {
         notes: action.text,
       });
 
-    case UPDATE_VEGI:
+    case UPDATE_DIET:
       return Object.assign({}, state, {
-        vegi: action.count,
+        diet: action.count,
       });
 
     default:
