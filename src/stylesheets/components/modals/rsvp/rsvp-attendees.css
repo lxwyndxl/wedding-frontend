@@ -76,7 +76,7 @@
 
 .group-address {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   margin-top: 10px;
 }
 
@@ -95,4 +95,14 @@
 
 .edit-address {
   color: #2d8cc2;
+}
+
+.address-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-city,
+.address-state {
+  margin-right: 20px;
 }
