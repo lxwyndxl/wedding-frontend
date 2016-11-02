@@ -1,101 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import cx from 'classnames';
+import Attendee from './attendee';
 import '../../../../stylesheets/components/modals/rsvp/rsvp-attendees.css';
 
 import {
   updateAttendingStatus,
   toggleEmailEditState,
-  updateUserEmail
+  updateUserEmail,
+  toggleAddressEditState,
+  updateAddress
 } from '../../../actions/rsvp-attendees';
 
-import Avatar from 'material-ui/Avatar';
-import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
-
-export function Attendee({
-  name,
-  email,
-  isAttending,
-  onCheck,
-  id,
-  onEmailEdit,
-  onEmailChange,
-  isEditing,
-}) {
-  const initial = name[0].toUpperCase();
-  const checkboxName = `user-${id}`;
-  const emailInputName = `email-${id}`;
-  const inputStyle = {
-    fontSize: 13,
-    width: 200,
-    height: 38,
-  };
-
-  let emailEditText = '';
-  if (isEditing) {
-    emailEditText = 'done';
-  } else {
-    emailEditText = email ? 'edit' : 'add email';
-  }
-
-  return (
-    <li className={cx('rsvp-attendee', { attending: isAttending })}>
-      <Avatar
-        backgroundColor="#44a5c9"
-        size={50}
-        className="attendee-avatar"
-      >
-        {initial}
-      </Avatar>
-      <Avatar
-        backgroundColor="white"
-        size={54}
-        className="attendee-avatar-bg"
-      />
-
-      <div className="attendee-data">
-        {
-          !isEditing && <p className="attendee-name">{name}</p>
-        }
-        {
-          isEditing ? <TextField
-                        defaultValue={email}
-                        className="attendee-email-edit"
-                        name={emailInputName}
-                        data-user-id={id}
-                        style={inputStyle}
-                        onChange={onEmailChange}
-                        autoFocus
-                      />
-                    : <p className="attendee-email">{email}</p>
-        }
-
-        <p className={cx('email edit', { editing: isEditing })}>
-          <a
-            href="#"
-            className="edit-email"
-            onClick={onEmailEdit}
-            data-user-id={id}
-          >
-            {emailEditText}
-          </a>
-        </p>
-      </div>
-
-      {!isEditing &&
-        <div className="attendee-going">
-          <Checkbox
-            defaultChecked={isAttending}
-            onCheck={onCheck}
-            data-user-id={id}
-            name={checkboxName}
-          />
-        </div>
-      }
-    </li>
-  );
-};
 
 class RsvpAttendees extends Component {
   constructor(props) {
@@ -103,6 +19,8 @@ class RsvpAttendees extends Component {
     this.onCheck = this.onCheck.bind(this);
     this.onEmailEdit = this.onEmailEdit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
+    this.onAddressEdit = this.onAddressEdit.bind(this);
+    this.onAddressChange = this.onAddressChange.bind(this);
     this.dispatch = props.dispatch;
   }
 
@@ -122,6 +40,16 @@ class RsvpAttendees extends Component {
     this.dispatch(updateUserEmail(userId, text));
   }
 
+  onAddressEdit(evt) {
+    evt.preventDefault();
+    this.dispatch(toggleAddressEditState());
+  }
+
+  onAddressChange(evt, text) {
+    const field = evt.target.dataset.address;
+    this.dispatch(updateAddress(field, text));
+  }
+
   render() {
     const {
       address_line1,
@@ -129,7 +57,22 @@ class RsvpAttendees extends Component {
       city,
       state,
       zipcode,
+      isEditing,
     } = this.props.userGroup;
+
+    const cityInputStyle = {
+      width: 150,
+    };
+
+    const stateInputStyle = {
+      width: 25,
+      textAlign: 'center',
+    };
+
+    const zipcodeInputStyle = {
+      width: 50,
+      textAlign: 'center',
+    };
 
     return (
       <section className="rsvp-attendees">
@@ -157,14 +100,66 @@ class RsvpAttendees extends Component {
         </ul>
         <div className="group-address">
           <h3 className="address-title">Address</h3>
-          <div className="address-text">
-            <p className="address line1">{address_line1}</p>
-            <p className="address line2">{address_line2}</p>
-            <p className="address line3">{`${city}, ${state} ${zipcode}`}</p>
-          </div>
+          {
+            isEditing ? <div className="address-fields">
+                          <TextField
+                            autoFocus
+                            defaultValue={address_line1}
+                            name="address-line1"
+                            className="address-line1"
+                            data-address="address_line1"
+                            hintText="2089 Pacific Blvd"
+                            onChange={this.onAddressChange}
+                          />
+                          <TextField
+                            defaultValue={address_line2}
+                            name="address-line2"
+                            className="address-line2"
+                            data-address="address_line2"
+                            hintText="Apt 123"
+                            onChange={this.onAddressChange}
+                          />
+                          <div className="address-line3">
+                            <TextField
+                              defaultValue={city}
+                              name="address-city"
+                              className="address-city"
+                              data-address="city"
+                              style={cityInputStyle}
+                              hintText="San Mateo"
+                              onChange={this.onAddressChange}
+                            />
+                            <TextField
+                              defaultValue={state}
+                              name="address-state"
+                              className="address-state"
+                              data-address="state"
+                              style={stateInputStyle}
+                              hintText="CA"
+                              onChange={this.onAddressChange}
+                            />
+                            <TextField
+                              defaultValue={zipcode}
+                              name="address-zipcode"
+                              className="address-zipcode"
+                              data-address="zipcode"
+                              style={zipcodeInputStyle}
+                              hintText="94403"
+                              onChange={this.onAddressChange}
+                            />
+                          </div>
+                        </div>
+
+                      : <div className="address-text">
+                          <p className="address line1">{address_line1}</p>
+                          <p className="address line2">{address_line2}</p>
+                          <p className="address line3">{`${city}, ${state} ${zipcode}`}</p>
+                        </div>
+
+          }
           <p className="address edit">
-            <a href="#" className="edit-address">
-              edit
+            <a href="#" className="edit-address" onClick={this.onAddressEdit}>
+              {isEditing ? 'done' : 'edit'}
             </a>
           </p>
         </div>

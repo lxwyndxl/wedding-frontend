@@ -1,7 +1,9 @@
 import {
   UPDATE_ATTENDING_STATUS,
   TOGGLE_EMAIL_EDIT_STATE,
-  UPDATE_USER_EMAIL
+  UPDATE_USER_EMAIL,
+  TOGGLE_ADDRESS_EDIT_STATE,
+  UPDATE_ADDRESS
 } from './constants';
 
 export const updateAttendingStatus = (userId, status) => {
@@ -26,3 +28,17 @@ export const updateUserEmail = (userId, text) => {
     text,
   };
 };
+
+export const toggleAddressEditState = () => {
+  return {
+    type: TOGGLE_ADDRESS_EDIT_STATE,
+  };
+};
+
+export const updateAddress = (field, text) => {
+  return {
+    type: UPDATE_ADDRESS,
+    field,
+    text,
+  };
+}
