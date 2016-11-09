@@ -1,29 +1,35 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { hideModal } from '../../actions/modal';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
-/**
- * Dialog with action buttons. The actions are passed in as an array of React objects,
- * in this example [FlatButtons](/#/components/flat-button).
- *
- * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
- */
 class SimpleDialog extends Component {
   constructor(props) {
     super(props);
+    this.dispatch = props.dispatch;
     this.onDialogSubmit = this.onDialogSubmit.bind(this);
   }
 
   onDialogSubmit() {
-    this.props.onDialogClose();
-    this.props.onRouteToConfirmation();
+    const {
+      routeOnSuccess,
+      onSubmit,
+      state,
+    } = this.props;
+
+    this.dispatch(onSubmit(state));
+    hideModal();
+    if (routeOnSuccess) {
+      push(routeOnSuccess);
+    }
   }
 
   render() {
     const {
       cancelText,
-      onDialogClose,
       submitText,
       title,
       isOpen,
@@ -45,7 +51,7 @@ class SimpleDialog extends Component {
       <FlatButton
         label={cancelText}
         primary={false}
-        onTouchTap={onDialogClose}
+        onTouchTap={hideModal}
       />,
       <FlatButton
         label={submitText}
@@ -61,7 +67,7 @@ class SimpleDialog extends Component {
         actions={actions}
         modal={false}
         open={isOpen}
-        onRequestClose={onDialogClose}
+        onRequestClose={hideModal}
         autoScrollBodyContent={true}
         children={content}
         contentStyle={customContentStyle}
@@ -71,6 +77,24 @@ class SimpleDialog extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const {
+    modalType,
+    modalProps,
+  } = state.modal;
+
+  return {
+    state: state,
+    isOpen: modalType != null,
+    title: modalProps.title,
+    content: modalProps.content,
+    actionable: modalProps.actionable,
+    disableSubmit: modalProps.disableSubmit,
+    routeOnSuccess: modalProps.routeOnSuccess,
+    onSubmit: modalProps.onSubmit,
+  };
+};
+
 SimpleDialog.propTypes = {
   submitText: PropTypes.string,
   cancelText: PropTypes.string,
@@ -78,8 +102,9 @@ SimpleDialog.propTypes = {
   content: PropTypes.node,
   actionable: PropTypes.bool,
   disableSubmit: PropTypes.bool,
-  onDialogClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func,
+  state: PropTypes.object,
 };
 
 SimpleDialog.defaultProps = {
@@ -89,6 +114,9 @@ SimpleDialog.defaultProps = {
   content: <div/>,
   actionable: true,
   disableSubmit: false,
+  onSubmit: () => {},
 };
+
+SimpleDialog = connect(mapStateToProps)(SimpleDialog);
 
 export default SimpleDialog;

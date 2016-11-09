@@ -5,11 +5,13 @@ const mapStateToProps = (state) => {
   const {
     userGroup,
     users,
+    rsvpState,
   } = state.rsvp;
 
   return {
     userGroup,
     users,
+    rsvpState,
   };
 };
 
