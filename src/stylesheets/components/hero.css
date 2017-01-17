@@ -72,3 +72,7 @@
   font-weight: 900;
   font-size: 99px;
 }
+
+.hero-rsvp-container {
+  position: absolute;
+}

@@ -4,6 +4,7 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
+import RsvpHero from './rsvp-hero';
 
 function AttendeeList({
   subheader,
@@ -101,36 +102,37 @@ export default class RsvpConfirmation extends Component {
 
 
     return (
-      <section className="rsvp-confirmation">
-        <h1>{isAnyoneAttending ? "We look forward to seeing you!" : "We will miss you!"}</h1>
+      <div>
+        <RsvpHero isAnyoneAttending={isAnyoneAttending}/>
+        <section className="rsvp-confirmation">
+          <h1>Here’s a a summary of what you told us:</h1>
 
-        <h2>Here’s a confirmation of what you told us:</h2>
+          <AttendeeList
+            subheader="Attending"
+            users={users.filter((user) => { return user.is_attending })}
+          />
+          <Divider />
+          <AttendeeList
+            subheader="Not Attending"
+            users={users.filter((user) => { return !user.is_attending })}
+          />
 
-        <AttendeeList
-          subheader="Attending"
-          users={users.filter((user) => { return user.is_attending })}
-        />
-        <Divider />
-        <AttendeeList
-          subheader="Not Attending"
-          users={users.filter((user) => { return !user.is_attending })}
-        />
+          {isAnyoneAttending &&
+            <div>
+              <Divider />
+              This is a destination wedding north of Lake Tahoe, California.
+              <Lodging userGroup={userGroup} />
+            </div>
+          }
 
-        {isAnyoneAttending &&
-          <div>
-            <Divider />
-            This is a destination wedding north of Lake Tahoe, California.
-            <Lodging userGroup={userGroup} />
-          </div>
-        }
-
-        <h3>Want to change something?</h3>
-        <FlatButton
-          onClick={onRsvpClick}
-        >
-          Edit your RSVP
-        </FlatButton>
-      </section>
+          <h3>Want to change something?</h3>
+          <FlatButton
+            onClick={onRsvpClick}
+          >
+            Edit your RSVP
+          </FlatButton>
+        </section>
+      </div>
     );
   }
 }
