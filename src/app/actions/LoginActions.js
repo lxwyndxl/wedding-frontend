@@ -40,7 +40,6 @@ export const fetchRsvpGroup = (email) => {
         body: { session: { email } },
       })
       .then((response) => {
-        debugger;
         if (response.user_id) {
           dispatch(receiveRsvpGroup(json))
         } else {

@@ -11,7 +11,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import HeaderNav from './app/components/nav';
 import Dialog from './app/containers/dialog';
 
-import Homepage from './app/containers/Homepage';
+import Homepage from './app/components/Homepage';
 import RsvpConfirmation from './app/containers/rsvp-confirmation';
 
 // Needed for onTouchTap
