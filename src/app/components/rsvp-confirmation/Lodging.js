@@ -42,14 +42,21 @@ function Calendars({ lodgingDays, requestedLodgingDays }) {
 
   return (
     <div>
-      <p className="error">
+      <p className="error space-2">
         You are <b>not</b> requesting on-site lodging. There are many other options
         nearby such as:
       </p>
       <ul>
-        <li>Example 1: Pine lodge</li>
-        <li>Example 2:</li>
-        <li>some other place</li>
+        <li className="space-1">
+          <a className="styled-link" href="http://www.graeagle.com/accommodations.html">
+            Graegle accommodations
+          </a>
+        </li>
+        <li className="space-1">
+          <a className="styled-link" href="http://www.ci.portola.ca.us/portola-lodging.html">
+            Portola accommodations
+          </a>
+        </li>
       </ul>
     </div>
   );
