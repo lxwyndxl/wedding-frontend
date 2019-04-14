@@ -57,8 +57,12 @@ class RsvpAttendees extends Component {
       city,
       state,
       zipcode,
-      isEditing,
     } = this.props.userGroup;
+
+    const {
+      isEditingAddress,
+      isEditingEmailMap,
+    } = this.props.rsvpState;
 
     const cityInputStyle = {
       width: 150,
@@ -91,7 +95,7 @@ class RsvpAttendees extends Component {
                   id={user.id}
                   onEmailEdit={this.onEmailEdit}
                   onEmailChange={this.onEmailChange}
-                  isEditing={user.isEditing}
+                  isEditing={isEditingEmailMap[user.id]}
                   key={index}
                 />
               );
@@ -101,7 +105,8 @@ class RsvpAttendees extends Component {
         <div className="group-address">
           <h3 className="address-title">Address</h3>
           {
-            isEditing ? <div className="address-fields">
+            isEditingAddress ?
+                        <div className="address-fields">
                           <TextField
                             autoFocus
                             defaultValue={address_line1}
@@ -159,7 +164,7 @@ class RsvpAttendees extends Component {
           }
           <p className="address edit">
             <a href="#" className="edit-address" onClick={this.onAddressEdit}>
-              {isEditing ? 'done' : 'edit'}
+              {isEditingAddress ? 'done' : 'edit'}
             </a>
           </p>
         </div>

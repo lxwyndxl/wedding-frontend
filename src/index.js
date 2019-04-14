@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import HeaderNav from './app/components/nav';
-import Dialog from './app/containers/dialog';
+import Dialog from './app/components/common/dialog';
 
 import Homepage from './app/components/Homepage';
 import RsvpConfirmation from './app/containers/rsvp-confirmation';

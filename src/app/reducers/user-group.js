@@ -3,13 +3,10 @@ import {
   UPDATE_ATTENDING_DAY,
   UPDATE_NOTE,
   UPDATE_DIET,
-  TOGGLE_ADDRESS_EDIT_STATE,
   UPDATE_ADDRESS
 } from '../actions/constants';
 
-const initialState = {
-  isEditing: false,
-};
+const initialState = {};
 
 const userGroup = (state = initialState, action) => {
   switch (action.type) {
@@ -29,11 +26,6 @@ const userGroup = (state = initialState, action) => {
     case UPDATE_DIET:
       return Object.assign({}, state, {
         diet: action.count,
-      });
-
-    case TOGGLE_ADDRESS_EDIT_STATE:
-      return Object.assign({}, state, {
-        isEditing: !state.isEditing,
       });
 
     case UPDATE_ADDRESS:
